@@ -7,7 +7,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=test
+      - POSTGRES_DB=test2
       # You should definitely change the password in production
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
