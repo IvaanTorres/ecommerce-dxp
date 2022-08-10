@@ -1,0 +1,20 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "Full-Stack Monorepo - React (TS) + Symfony + GraphQL Support",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "docker:db": "docker-compose down && docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvaanTorres/ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvaanTorres/ecommerce/issues"
+  },
+  "homepage": "https://github.com/IvaanTorres/ecommerce#readme"
+}

@@ -9,36 +9,25 @@ import { gql, useQuery } from '@apollo/client'
 import { Typography } from '@mui/material'
 import moment from 'moment'
 import _ from 'lodash'
+import { FIND_PRODUCT } from '../graphql/queries/Product'
 
-
-const FIND_PRODUCT = gql`
-query {
-  product(id: "api/products/1") {
-    name
-    id
-  }
-}
-`
-
-const Home: NextPage = () => {
+const Home: NextPage = ({}) => {
   const [count, setCount] = useState(0)
-  const { loading, data } = useQuery(FIND_PRODUCT)
+  const { loading, error, data } = useQuery(FIND_PRODUCT, {
+    variables: {
+      id: 'api/products/1'
+    }
+  })
   console.log(data);
   const time = moment().startOf('day').fromNow()
   const chunking = _.chunk(['a', 'b', 'c', 'd'], 3)
   console.log(chunking);
 
-
-
-  // eslint-disable-next-line no-unused-vars
-  let hey = 3
-
-  
-
   return (
     <div>
-      {loading ?
-        <p>Loading...</p> :
+      {error && <div data-testid="error">Error: {error.message}</div>}
+      {loading && <p>Loading...</p>}
+      {data &&
         (
           <div>
             <Button variant="contained" onClick={() => setCount(count+1)}>Hello World</Button>
