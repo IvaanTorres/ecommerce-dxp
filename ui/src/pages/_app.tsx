@@ -3,18 +3,17 @@ import 'normalize.css/normalize.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
 import { ApolloProvider } from '@apollo/client'
-import apolloClient from "../config/apollo-client"
 import { Provider } from 'react-redux'
+import apolloClient from '../config/apollo-client'
 import store from '../redux/configureStore'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <ApolloProvider client={apolloClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </ApolloProvider>
-  )
-}
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  <ApolloProvider client={apolloClient}>
+    <Provider store={store}>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
+    </Provider>
+  </ApolloProvider>
+)
 
 export default React.memo(MyApp)

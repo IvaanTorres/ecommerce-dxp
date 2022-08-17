@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Button } from './Button';
-import './header.css';
+import Button from './Button'
+import './header.css'
 
 type User = {
   name: string;
-};
+}
 
 interface HeaderProps {
   user?: User;
@@ -14,7 +14,15 @@ interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
+const defaultProps = {
+  user: {
+    name: '',
+  },
+}
+
+export const Header = ({
+  user, onLogin, onLogout, onCreateAccount,
+}: HeaderProps) => (
   <header>
     <div className="wrapper">
       <div>
@@ -40,7 +48,10 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
         {user ? (
           <>
             <span className="welcome">
-              Welcome, <b>{user.name}</b>!
+              Welcome,
+              {' '}
+              <b>{user.name}</b>
+              !
             </span>
             <Button size="small" onClick={onLogout} label="Log out" />
           </>
@@ -53,4 +64,6 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
       </div>
     </div>
   </header>
-);
+)
+
+Header.defaultProps = defaultProps

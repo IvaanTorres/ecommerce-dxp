@@ -1,0 +1,10 @@
+.next
+.storybook
+coverage
+node_modules
+public
+next-env.d.ts
+next.config.js
+package-lock.json
+package.json
+.babelrc

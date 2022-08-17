@@ -1,5 +1,5 @@
-import React from 'react';
-import './button.module.scss';
+import React from 'react'
+import './button.module.scss'
 
 interface ButtonProps {
   /**
@@ -24,6 +24,13 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
+const defaultProps = {
+  primary: false,
+  size: 'medium',
+  backgroundColor: 'transparent',
+  onClick: () => {},
+}
+
 /**
  * Primary UI component for user interaction
  */
@@ -34,7 +41,7 @@ const Button = ({
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary'
   return (
     <button
       type="button"
@@ -44,7 +51,9 @@ const Button = ({
     >
       {label}
     </button>
-  );
-};
+  )
+}
 
-export default React.memo(Button);
+Button.defaultProps = defaultProps
+
+export default React.memo(Button)
