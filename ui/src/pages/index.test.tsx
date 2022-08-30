@@ -1,14 +1,22 @@
-import 'jsdom-global/register'
 import React from 'react'
 import { render } from '@testing-library/react'
 import { screen, waitFor } from '@testing-library/dom'
-import '@testing-library/jest-dom'
 import { MockedProvider } from '@apollo/client/testing'
 import { Provider } from 'react-redux'
-import Index from './index'
+import Index from './index.page'
 import { FIND_PRODUCT } from '../enums/graphql/queries/Product'
 import store from '../redux/configureStore'
 
+const product = {
+  success: {
+    data: {
+      product: { id: '1', name: 'Product 1' },
+    },
+  },
+  error: {
+    error: new Error('Error'),
+  },
+}
 const productId = 'api/products/1'
 const mocks = {
   success: {
@@ -42,37 +50,36 @@ describe('just testing', () => {
     expect(a + b).toBe(3)
   })
 
-  // ! https://www.apollographql.com/docs/react/development-testing/testing/
-  it('should be loading', async () => {
-    const view = render(
+  // ? https://www.apollographql.com/docs/react/development-testing/testing/
+  // ! Using SSR/SSG, the loading state is not shown in the DOM.
+  it.skip('should be loading', async () => {
+    render(
       <MockedProvider mocks={[mocks.success]} addTypename={false}>
         <Provider store={store}>
-          <Index />
+          <Index product={{}} />
         </Provider>
       </MockedProvider>,
     )
     expect(await screen.findByText('Loading...')).toBeInTheDocument()
   })
 
-  it('should show the info', async () => {
-    const view = render(
+  it('should show the info', () => {
+    render(
       <MockedProvider mocks={[mocks.success]} addTypename={false}>
         <Provider store={store}>
-          <Index />
+          <Index product={product.success} />
         </Provider>
       </MockedProvider>,
     )
-
-    await waitFor(() => {
-      expect(screen.getByText('Product name: Product 1')).toBeInTheDocument()
-    })
+    // expect(textfield.getByText((content) => content.includes('Product 1'))).toBeInTheDocument()
+    expect(screen.getByTestId('productName')).toHaveTextContent('Product 1')
   })
 
   it('should get an error', async () => {
-    const view = render(
+    render(
       <MockedProvider mocks={[mocks.error]} addTypename={false}>
         <Provider store={store}>
-          <Index />
+          <Index product={product.error} />
         </Provider>
       </MockedProvider>,
     )

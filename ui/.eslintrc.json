@@ -35,6 +35,7 @@
   "rules": {
     "@typescript-eslint/semi": ["error", "never"],
     "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
     "react/function-component-definition": [
       2,
       {

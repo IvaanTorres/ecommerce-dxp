@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,7 +21,10 @@
   },
   "include": [
     "next-env.d.ts",
+    "next.config.js",
     "**/*.ts",
+    "**/*.cjs",
+    "**/*.js",
     "**/*.tsx",
   ],
   "exclude": [

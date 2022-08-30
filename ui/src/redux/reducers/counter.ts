@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import Counter from '../../interfaces/counter';
+import Counter from '../../interfaces/counter'
 
 export interface CounterState {
   counters: Counter[];

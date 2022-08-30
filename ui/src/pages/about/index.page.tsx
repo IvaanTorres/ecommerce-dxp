@@ -10,6 +10,7 @@ const About: NextPage = () => {
     variables: {
       id: 'api/products/1',
     },
+    fetchPolicy: 'cache-only',
   })
 
   return (

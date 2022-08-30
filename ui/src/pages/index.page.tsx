@@ -1,7 +1,9 @@
 import type { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
-import { useQuery } from '@apollo/client'
+import {
+  ApolloClient, NormalizedCacheObject,
+} from '@apollo/client'
 import { Typography } from '@mui/material'
 import moment from 'moment'
 import _ from 'lodash'
@@ -13,6 +15,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import Counter from '../interfaces/counter'
 import Test from '../components/atoms/Test'
 import { ProductData, ProductVars } from '../interfaces/graphql/Product'
+import { addApolloState, initializeApollo } from '../config/apollo-client'
 
 const INITIAL_COUNTER: Counter = {
   id: 0,
@@ -20,16 +23,18 @@ const INITIAL_COUNTER: Counter = {
   value: 0,
 }
 
-const Home: NextPage = () => {
+interface Props {
+  product: {
+    data?: ProductData
+    error?: Error
+  },
+}
+
+const Home: NextPage<Props> = ({ product }) => {
   const dispatch = useAppDispatch()
   const counter2 = useAppSelector(counter)
   const [count, setCount] = useState<Counter>(INITIAL_COUNTER)
-  const { loading, error, data } = useQuery<ProductData, ProductVars>(FIND_PRODUCT, {
-    variables: {
-      id: 'api/products/1',
-    },
-  })
-  console.log(data)
+
   const time = moment().startOf('day').fromNow()
   const chunking = _.chunk(['a', 'b', 'c', 'd'], 3)
   console.log(chunking)
@@ -55,23 +60,23 @@ const Home: NextPage = () => {
     <div>
       <h1>Testing message</h1>
       <Link href="about/">Go to about</Link>
-      {error && (
+      {product.error && (
       <div data-testid="error">
         Error:
         {' '}
-        {error.message}
+        {product.error.message}
       </div>
       )}
-      {loading && <p>Loading...</p>}
-      {data
+      {product.data
         && (
           <div>
             <Button variant="contained" onClick={handleClick}>Push !</Button>
             <Test title="Test title" />
-            <Typography variant="h4">
+            <Typography variant="h4" data-testid="productName">
               Product name:
               {' '}
-              {data.product.name}
+              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
+              {product.data.product.name}
             </Typography>
             <p>{time}</p>
             <p>
@@ -95,6 +100,31 @@ const Home: NextPage = () => {
         )}
     </div>
   )
+}
+
+/* Home.defaultProps = {
+  data: undefined,
+} */
+
+export const getStaticProps = async () => {
+  const client2: ApolloClient<NormalizedCacheObject> = initializeApollo()
+
+  interface Product {
+    data: ProductData
+    error: Error
+  }
+  const product = await client2.query<Product, ProductVars>({
+    query: FIND_PRODUCT,
+    variables: {
+      id: 'api/products/1',
+    },
+  })
+
+  return addApolloState(client2, {
+    props: {
+      product,
+    },
+  })
 }
 
 export default React.memo(Home)
