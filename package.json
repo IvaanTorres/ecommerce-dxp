@@ -5,7 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "docker:db": "docker-compose down && docker-compose up"
+    "docker:db": "docker-compose down && docker-compose up",
+    "release": "standard-version --no-verify",
+    "release:patch": "standard-version --no-verify --release-as patch",
+    "release:minor": "standard-version --no-verify --release-as minor",
+    "release:major": "standard-version --no-verify --release-as major",
+    "release:dry": "standard-version --dry-run --no-verify"
   },
   "repository": {
     "type": "git",
@@ -16,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/IvaanTorres/ecommerce/issues"
   },
-  "homepage": "https://github.com/IvaanTorres/ecommerce#readme"
+  "homepage": "https://github.com/IvaanTorres/ecommerce#readme",
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
 }
