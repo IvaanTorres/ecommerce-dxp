@@ -1,16 +1,13 @@
 /* eslint-disable */
 import {
   ApolloClient,
-  from,
   HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client";
-import { FormHelperTextProps } from "@mui/material";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
-import https from "https";
 
 export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 
@@ -20,9 +17,7 @@ export const createApolloClient = () => (
   new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: new HttpLink({
-      uri: 'https://localhost:8000/api/graphql',
-      fetch,
-      fetchOptions: { agent: new https.Agent({ rejectUnauthorized: false }) }
+      uri: 'http://localhost:8000/graphql',
     }),
     cache: new InMemoryCache(),
   })

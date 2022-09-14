@@ -8,7 +8,7 @@ import { ProductData, ProductVars } from '../../interfaces/graphql/Product'
 const About: NextPage = () => {
   const { loading, data } = useQuery<ProductData, ProductVars>(FIND_PRODUCT, {
     variables: {
-      id: 'api/products/1',
+      id: '1',
     },
     fetchPolicy: 'cache-only',
   })

@@ -1,6 +1,0 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
-api_graphql_entrypoint:
-    path: /api/graphql
-    controller: api_platform.graphql.action.entrypoint

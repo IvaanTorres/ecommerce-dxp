@@ -116,7 +116,7 @@ export const getStaticProps = async () => {
   const product = await client2.query<Product, ProductVars>({
     query: FIND_PRODUCT,
     variables: {
-      id: 'api/products/1',
+      id: '1',
     },
   })
 
