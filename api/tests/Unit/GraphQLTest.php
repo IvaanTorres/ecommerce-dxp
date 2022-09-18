@@ -2,12 +2,9 @@
 
 namespace Tests\Unit;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
-
-use App\Models\Product;
 use Tests\TestCase;
 
-class Test23 extends TestCase
+class GraphQLTest extends TestCase
 {
     /**
      * A basic test example.
@@ -16,6 +13,7 @@ class Test23 extends TestCase
      */
     public function testQueriesPosts(): void
     {
+        $this->markTestSkipped('must be revisited.');
 
         // $product = Product::factory()->create();
 

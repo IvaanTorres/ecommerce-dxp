@@ -1,0 +1,58 @@
+name: API (Laravel 9 - GraphQL - PostgreSQL) - CI/CD
+on:
+  push:
+    branches: ['dev', 'master']
+
+env:
+  RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PROD }}
+
+jobs:
+  # ---------------------------------------------------------------------------- #
+  #                                   Tests job                                  #
+  # ---------------------------------------------------------------------------- #
+  Tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - '7.4'
+          - '8.0'
+          - '8.1'
+        dependency-versions:
+          - 'lowest'
+          - 'highest'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd api/
+          composer install
+
+      - name: Run PHPUnit
+        run: |
+          cd api/
+          ./vendor/bin/phpunit
+
+  # ---------------------------------------------------------------------------- #
+  #                                Deployment job                                #
+  # ---------------------------------------------------------------------------- #
+  Deploy:
+    needs: 'Tests'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - '8.1' # The Railway Docker container needs PHP 8.1 minimum
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install the Railway CLI
+        run: npm i -g @railway/cli
+
+      - name: Deployment to Railway
+        run: railway up

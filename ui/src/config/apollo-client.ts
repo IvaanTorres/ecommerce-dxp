@@ -8,6 +8,7 @@ import {
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
+import env from "./environment";
 
 export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 
@@ -17,7 +18,7 @@ export const createApolloClient = () => (
   new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: new HttpLink({
-      uri: 'http://localhost:8000/graphql',
+      uri: env.NEXT_PUBLIC_API_URL
     }),
     cache: new InMemoryCache(),
   })

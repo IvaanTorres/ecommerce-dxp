@@ -16,6 +16,7 @@ import Counter from '../interfaces/counter'
 import Test from '../components/atoms/Test'
 import { ProductData, ProductVars } from '../interfaces/graphql/Product'
 import { addApolloState, initializeApollo } from '../config/apollo-client'
+import env from '../config/environment'
 
 const INITIAL_COUNTER: Counter = {
   id: 0,
@@ -38,6 +39,7 @@ const Home: NextPage<Props> = ({ product }) => {
   const time = moment().startOf('day').fromNow()
   const chunking = _.chunk(['a', 'b', 'c', 'd'], 3)
   console.log(chunking)
+  console.log(env.NEXT_PUBLIC_API_URL)
 
   useEffect(() => {
     setCount((prev) => ({
@@ -106,7 +108,7 @@ const Home: NextPage<Props> = ({ product }) => {
   data: undefined,
 } */
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const client2: ApolloClient<NormalizedCacheObject> = initializeApollo()
 
   interface Product {

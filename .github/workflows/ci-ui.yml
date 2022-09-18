@@ -1,19 +1,79 @@
-name: GitHub Actions Vercel Production Deployment
+name: UI (NextJS) - CI/CD
 on:
   push:
     branches:
       - dev
       - master
+
 jobs:
-  Deploy-Production:
+  # ---------------------------------------------------------------------------- #
+  #                                     Build                                    #
+  # ---------------------------------------------------------------------------- #
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd ui/
+          npm install
+
+      - name: Build the UI
+        run: |
+          cd ui/
+          npm run build
+
+  # ---------------------------------------------------------------------------- #
+  #                                     Tests                                    #
+  # ---------------------------------------------------------------------------- #
+  Tests:
+    needs: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd ui/
+          npm install
+
+      - name: Run Unit tests (Jest)
+        run: |
+          cd ui/
+          npm run test
+
+  # ---------------------------------------------------------------------------- #
+  #                                  Deployment                                  #
+  # ---------------------------------------------------------------------------- #
+  Deploy:
+    needs: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Build Project Artifacts
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
