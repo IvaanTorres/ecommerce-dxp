@@ -2,15 +2,15 @@ import React from 'react'
 import { NextPage } from 'next'
 import { useQuery } from '@apollo/client'
 import { Typography } from '@mui/material'
-import { FIND_PRODUCT } from '../../enums/graphql/queries/Product'
-import { ProductData, ProductVars } from '../../interfaces/graphql/Product'
+import { FIND_PRODUCT } from '../../shared/services/Product'
+import { ProductData, ProductVars } from '../../shared/interfaces/graphql/Product'
 
 const About: NextPage = () => {
   const { loading, data } = useQuery<ProductData, ProductVars>(FIND_PRODUCT, {
     variables: {
       id: '1',
     },
-    fetchPolicy: 'cache-only',
+    fetchPolicy: 'cache-first',
   })
 
   return (

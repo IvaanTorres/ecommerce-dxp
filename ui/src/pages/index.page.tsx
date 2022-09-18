@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
@@ -8,13 +10,13 @@ import { Typography } from '@mui/material'
 import moment from 'moment'
 import _ from 'lodash'
 import Link from 'next/link'
-import { FIND_PRODUCT } from '../enums/graphql/queries/Product'
+import { FIND_PRODUCT } from '../shared/services/Product'
 import { increment } from '../redux/reducers/counter'
 import { counter } from '../redux/selectors'
-import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import Counter from '../interfaces/counter'
+import { useAppDispatch, useAppSelector } from '../shared/hooks/redux'
+import Counter from '../shared/interfaces/counter'
 import Test from '../components/atoms/Test'
-import { ProductData, ProductVars } from '../interfaces/graphql/Product'
+import { ProductData, ProductVars } from '../shared/interfaces/graphql/Product'
 import { addApolloState, initializeApollo } from '../config/apollo-client'
 import env from '../config/environment'
 

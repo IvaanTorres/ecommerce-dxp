@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/dot-notation */
-import '../../styles/globals.css'
 import 'normalize.css/normalize.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
