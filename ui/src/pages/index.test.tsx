@@ -4,7 +4,7 @@ import { screen, waitFor } from '@testing-library/dom'
 import { MockedProvider } from '@apollo/client/testing'
 import { Provider } from 'react-redux'
 import Index from './index.page'
-import { FIND_PRODUCT } from '../enums/graphql/queries/Product'
+import { FIND_PRODUCT } from '../shared/services/Product'
 import store from '../redux/configureStore'
 
 const product = {
