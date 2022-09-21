@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Button from './Button'
+import { Button } from './Button'
 import './header.scss'
 
 type User = {
@@ -12,12 +12,6 @@ interface HeaderProps {
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
-}
-
-const defaultProps = {
-  user: {
-    name: '',
-  },
 }
 
 export const Header = ({
@@ -66,4 +60,6 @@ export const Header = ({
   </header>
 )
 
-Header.defaultProps = defaultProps
+Header.defaultProps = {
+  user: undefined,
+}

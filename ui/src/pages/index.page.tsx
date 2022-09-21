@@ -19,6 +19,7 @@ import Test from '../components/atoms/Test'
 import { ProductData, ProductVars } from '../shared/interfaces/graphql/Product'
 import { addApolloState, initializeApollo } from '../config/apollo-client'
 import env from '../config/environment'
+import styles from './index.module.scss'
 
 const INITIAL_COUNTER: Counter = {
   id: 0,
@@ -73,7 +74,7 @@ const Home: NextPage<Props> = ({ product }) => {
       )}
       {product.data
         && (
-          <div>
+          <div className={styles.testing}>
             <Button variant="contained" onClick={handleClick}>Push !</Button>
             <Test title="Test title" />
             <Typography variant="h4" data-testid="productName">

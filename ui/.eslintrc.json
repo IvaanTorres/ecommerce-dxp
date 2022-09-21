@@ -2,7 +2,8 @@
   "plugins": [
     "jest",
     "testing-library",
-    "sonarjs"
+    "sonarjs",
+    "eslint-plugin-storybook"
   ],
   "extends": [
     "airbnb",

@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.module.scss'
+import styles from './Button.module.scss'
 
 interface ButtonProps {
   /**
@@ -24,17 +24,10 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const defaultProps = {
-  primary: false,
-  size: 'medium',
-  backgroundColor: 'transparent',
-  onClick: () => {},
-}
-
 /**
  * Primary UI component for user interaction
  */
-const Button = ({
+export const Button = ({
   primary = false,
   size = 'medium',
   backgroundColor,
@@ -45,7 +38,7 @@ const Button = ({
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={[styles['storybook-button'], styles[`storybook-button--${size}`], styles[mode]].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
@@ -54,6 +47,9 @@ const Button = ({
   )
 }
 
-Button.defaultProps = defaultProps
-
-export default React.memo(Button)
+Button.defaultProps = {
+  backgroundColor: null,
+  primary: false,
+  size: 'medium',
+  onClick: undefined,
+}
