@@ -1,16 +1,16 @@
 {
-  "name": "ecommerce",
+  "name": "ecommerce-dxp",
   "version": "1.0.0",
-  "description": "Full-Stack Monorepo - React (TS) + Symfony + GraphQL Support",
+  "description": "E-Commerce - Digital Experience Platform (DXP)",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "docker:db": "docker-compose down && docker-compose up",
-    "release": "standard-version --no-verify",
-    "release:patch": "standard-version --no-verify --release-as patch",
-    "release:minor": "standard-version --no-verify --release-as minor",
-    "release:major": "standard-version --no-verify --release-as major",
-    "release:dry": "standard-version --dry-run --no-verify"
+    "release": "git add . && standard-version --no-verify",
+    "release:patch": "git add . && standard-version --no-verify --release-as patch",
+    "release:minor": "git add . && standard-version --no-verify --release-as minor",
+    "release:major": "git add . && standard-version --no-verify --release-as major",
+    "release:dry": "git add . && standard-version --dry-run --no-verify"
   },
   "repository": {
     "type": "git",
