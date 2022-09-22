@@ -8,7 +8,7 @@ import {
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
-import env from "./environment";
+import env from "../shared/constants/config/environment";
 
 export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 
@@ -28,7 +28,7 @@ interface InitApollo {
   initialState?: any;
 }
 
-export function initializeApollo(initialState = null) {
+export function initializeApollo(initialState: InitApollo = null as any) {
   const _apolloClient = apolloClient ?? createApolloClient()
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/IvaanTorres/ecommerce#readme",
   "devDependencies": {
+    "@types/minimist": "^1.2.2",
     "standard-version": "^9.5.0"
   }
 }

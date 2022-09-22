@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/dot-notation */
-import 'normalize.css/normalize.css'
-import type { AppProps } from 'next/app'
 import React from 'react'
-import { ApolloProvider } from '@apollo/client'
+import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
+import { ApolloProvider } from '@apollo/client'
 import NextNProgress from 'nextjs-progressbar'
 import { useApollo } from '../config/apollo-client'
 import store from '../redux/configureStore'
+// Global CSS
+import 'normalize.css/normalize.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const client = useApollo(pageProps)
@@ -15,7 +15,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <NextNProgress />
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </Provider>
     </ApolloProvider>
