@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "@typescript-eslint",
     "jest",
     "testing-library",
     "sonarjs",
@@ -9,12 +10,10 @@
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
-    "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:sonarjs/recommended",
     "plugin:you-dont-need-lodash-underscore/compatible",
-    "next"
+    "plugin:sonarjs/recommended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -26,7 +25,7 @@
     {
       // 3) Now we enable eslint-plugin-testing-library rules or preset only for matching testing files!
       "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "extends": ["plugin:testing-library/react"],
+      "extends": ["plugin:testing-library/react", "plugin:jest/recommended"],
       "rules": {
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",

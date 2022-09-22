@@ -1,1 +1,7 @@
-export const a = 1
+import React from 'react'
+
+describe('testing', () => {
+  it('testing', () => {
+    expect(true).toBe(true)
+  })
+})
