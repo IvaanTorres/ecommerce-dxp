@@ -13,7 +13,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:sonarjs/recommended",
-    "plugin:you-dont-need-lodash-underscore/compatible"
+    "plugin:you-dont-need-lodash-underscore/compatible",
+    "next"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
