@@ -8,7 +8,7 @@ import {
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
-import env from "../shared/constants/config/environment";
+import env from "../shared/enums/config/environment";
 
 export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 

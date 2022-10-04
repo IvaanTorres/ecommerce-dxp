@@ -7,6 +7,7 @@ import { useApollo } from '../config/apollo-client'
 import store from '../redux/configureStore'
 // Global CSS
 import 'normalize.css/normalize.css'
+import './_app.scss'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const client = useApollo(pageProps)

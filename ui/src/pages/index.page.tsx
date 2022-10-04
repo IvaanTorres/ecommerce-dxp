@@ -16,8 +16,11 @@ import Counter from '../shared/interfaces/counter'
 import Test from '../components/atoms/Test/Test'
 import { ProductData, ProductVars } from '../shared/interfaces/graphql/Product'
 import { addApolloState, initializeApollo } from '../config/apollo-client'
-import env from '../shared/constants/config/environment'
+import env from '../shared/enums/config/environment'
 import styles from './index.module.scss'
+import colors from '../shared/enums/design-system/colors'
+import fontSizes from '../shared/enums/design-system/font-sizes'
+import boxShadows from '../shared/enums/design-system/box-shadows'
 
 const INITIAL_COUNTER: Counter = {
   id: 0,
@@ -61,14 +64,27 @@ const Home: NextPage<Props> = ({ product }) => {
 
   return (
     <div>
-      <h1>Testing message</h1>
+      <h1
+        style={{
+          color: colors.red[700],
+          fontSize: fontSizes.text_4xl,
+        }}
+      >
+        Testing message
+      </h1>
       <Link href="about/">Go to about</Link>
       {product.error && (
         <div data-testid="error">Error: {product.error.message}</div>
       )}
       {product.data && (
         <div className={styles.testing}>
-          <Button variant="contained" onClick={handleClick}>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            style={{
+              boxShadow: boxShadows[3],
+            }}
+          >
             Push !
           </Button>
           <Test title="Test title" />
@@ -105,6 +121,7 @@ export const getServerSideProps = async () => {
     variables: {
       id: '1',
     },
+    fetchPolicy: 'cache-first',
   })
 
   return addApolloState(client2, {
