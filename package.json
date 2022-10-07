@@ -5,6 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev:ui":"cd ui/ && npm run dev",
+    "build:ui":"cd ui/ && npm run build",
+    "dev:api":"cd api/ && php artisan serve",
     "docker:db": "docker-compose down && docker-compose up",
     "release": "git add . && standard-version --no-verify",
     "release:patch": "git add . && standard-version --no-verify --release-as patch",
