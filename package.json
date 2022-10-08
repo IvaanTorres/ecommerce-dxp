@@ -5,9 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev:ui":"cd ui/ && npm run dev",
-    "build:ui":"cd ui/ && npm run build",
-    "dev:api":"cd api/ && php artisan serve",
+    "dev:ui": "cd ui/ && npm run dev",
+    "build:ui": "cd ui/ && npm run build",
+    "dev:api": "cd api/ && php artisan serve",
+    "migrate:db": "cd api/ && php artisan migrate:refresh --seed",
     "docker:db": "docker-compose down && docker-compose up",
     "release": "git add . && standard-version --no-verify",
     "release:patch": "git add . && standard-version --no-verify --release-as patch",
@@ -19,8 +20,8 @@
     "type": "git",
     "url": "git+https://github.com/IvaanTorres/ecommerce.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "https://github.com/IvaanTorres",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/IvaanTorres/ecommerce/issues"
   },
