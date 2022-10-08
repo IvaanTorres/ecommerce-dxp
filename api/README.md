@@ -1,34 +1,34 @@
-# API - E-Commerce - Digital Experience Platform (DXP) - (v1.1.0)
+# API - E-Commerce - Digital Experience Platform (DXP)
 
 Link to the project in production: [https://ecommerce-dxp-production.up.railway.app](https://ecommerce-dxp-production.up.railway.app//)
 
 ## Features
+
 \-
 
 ## Install for development
-* Install dependencies
+
+-   Set up the local database connection config through "/api/.env"
+-   Install dependencies
+
 ```bash
-npm i
-```
-* Start the development server
-```bash
-npm run dev
-```
-* (OPTIONAL) - Start the Storybook server
-```bash
-npm run storybook
-```
-* (OPTIONAL) - Lint code
-```bash
-npm run lint
-```
-* (OPTIONAL) - Run tests
-```bash
-npm run tests
+composer install
 ```
 
-## Author
-Linkedin: [linkedin.com/in/ivan-torres-garcia](linkedin.com/in/ivan-torres-garcia)
+-   Create the APP_KEY
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+```bash
+php artisan key:generate
+```
+
+-   Migrate mock data to the local database
+
+```bash
+npm run migrate:db
+```
+
+-   Start the development server (Install Artisan CLI in case of error)
+
+```bash
+php artisan serve
+```

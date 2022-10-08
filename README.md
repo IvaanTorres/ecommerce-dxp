@@ -1,4 +1,4 @@
-# E-Commerce - Digital Experience Platform (DXP) - (v1.1.0)
+# E-Commerce - Digital Experience Platform (DXP)
 
 E-Commerce DXP project which aims to create a full experience regarding the brand and the final user.
 
@@ -44,6 +44,18 @@ npm run docker:db
 
 ```bash
 composer install
+```
+
+- Create the APP_KEY
+
+```bash
+php artisan key:generate
+```
+
+- Migrate mock data to the local database
+
+```bash
+npm run migrate:db
 ```
 
 - Start the development server (Install Artisan CLI in case of error)
