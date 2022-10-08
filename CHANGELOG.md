@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/IvaanTorres/ecommerce/compare/v1.1.0...v1.2.0) (2022-10-08)
+
+
+### Features
+
+* **design-system:** create the ui design system ([#22](https://github.com/IvaanTorres/ecommerce/issues/22)) ([45b81ca](https://github.com/IvaanTorres/ecommerce/commit/45b81cac50db6b8cec19e9a4c8f6b0a9332e231d))
+
+
+### Bug Fixes
+
+* **eslint:** arrange the eslint config ([#21](https://github.com/IvaanTorres/ecommerce/issues/21)) ([447edc1](https://github.com/IvaanTorres/ecommerce/commit/447edc1cf7c18e654673071c402ed4cb819cdd5a))
+
+
+### Style/Clean up
+
+* **architecture:** clean up project architecture files ([#19](https://github.com/IvaanTorres/ecommerce/issues/19)) ([941daa1](https://github.com/IvaanTorres/ecommerce/commit/941daa170041cdcd8c54b32de888c57be020b9db))
+* **architecture:** clean up project architecture files ([#19](https://github.com/IvaanTorres/ecommerce/issues/19)) ([4f4d61f](https://github.com/IvaanTorres/ecommerce/commit/4f4d61f79189edad830cb4e0ace181c2ad80f83d))
+
+
+### Build
+
+* **migrations:** create migrations ([#23](https://github.com/IvaanTorres/ecommerce/issues/23)) ([4c5ddfa](https://github.com/IvaanTorres/ecommerce/commit/4c5ddfa8251e9def735fbe3371ce871ae2d8e638))
+
+
+### Documentation
+
+* **comments:** add comments ([#20](https://github.com/IvaanTorres/ecommerce/issues/20)) ([2d49c51](https://github.com/IvaanTorres/ecommerce/commit/2d49c51a0fc2316684ce621a9854e94841328385))
+* **license:** modify license to GNU GPLv3 ([#24](https://github.com/IvaanTorres/ecommerce/issues/24)) ([eb7a6d6](https://github.com/IvaanTorres/ecommerce/commit/eb7a6d6177eb0ec5a61161e3655c80444c4c6fc0))
+
 ## 1.1.0 (2022-09-21)
 
 

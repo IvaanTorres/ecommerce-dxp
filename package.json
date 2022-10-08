@@ -1,6 +1,6 @@
 {
   "name": "ecommerce-dxp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "GNU GPLv3",
   "description": "E-Commerce - Digital Experience Platform (DXP)",
   "main": "index.js",
@@ -11,11 +11,11 @@
     "dev:api": "cd api/ && php artisan serve",
     "migrate:db": "cd api/ && php artisan migrate:refresh --seed",
     "docker:db": "docker-compose down && docker-compose up",
-    "release": "git add . && standard-version --no-verify",
-    "release:patch": "git add . && standard-version --no-verify --release-as patch",
-    "release:minor": "git add . && standard-version --no-verify --release-as minor",
-    "release:major": "git add . && standard-version --no-verify --release-as major",
-    "release:dry": "git add . && standard-version --dry-run --no-verify"
+    "release": "git add . && standard-version -a --no-verify",
+    "release:patch": "git add . && standard-version -a --no-verify --release-as patch",
+    "release:minor": "git add . && standard-version -a --no-verify --release-as minor",
+    "release:major": "git add . && standard-version -a --no-verify --release-as major",
+    "release:dry": "git add . && standard-version -a --dry-run --no-verify"
   },
   "repository": {
     "type": "git",
