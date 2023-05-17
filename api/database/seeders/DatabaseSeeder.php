@@ -17,6 +17,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call([
+            // Users
+            // GenderSeeder::class,
+            // RoleSeeder::class,
+            UserSeeder::class,
+
+            // Discounts
+            StarSeeder::class,
+            // DiscountSeeder::class,
+
+            // Products
+            BrandSeeder::class,
+            // ProductSeeder::class,
+        ]);
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -24,8 +40,21 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Product::factory(10)
-        ->sequence(fn ($sequence) => ['name' => 'Product '.$sequence->index + 1])
-        ->create();
+        // Product::factory(10)
+        // ->sequence(fn ($sequence) => 
+        //     [
+        //         'name' => 'Product '.$sequence->index + 1,
+        //         'description' => 'Description '.$sequence->index + 1,
+        //         'price' => 10.00,
+        //         'stock' => 10,
+        //         'nb_stars_id' => 1,
+        //         'nb_reviews' => 0,
+        //         'brand_id' => 1,
+        //         'discount_id' => 1,
+        //         'weight' => 10,
+        //         'final_price' => 10.00,
+        //         'ref' => 'REF'.$sequence->index + 1,
+        //     ])
+        // ->create();
     }
 }

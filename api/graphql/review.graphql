@@ -1,0 +1,10 @@
+type Review {
+    id: ID!
+    title: String!
+    body: String!
+}
+
+extend type Query {
+    "Find user by id"
+    reviews: [Review!]! @all
+}

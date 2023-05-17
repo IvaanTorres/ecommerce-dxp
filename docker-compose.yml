@@ -6,7 +6,7 @@ services:
       - ./.env
     image: postgres:13-alpine
     ports:
-      - '${DB_PORT}:${DB_PORT}'
+      - '${DB_PORT}:5432'
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}

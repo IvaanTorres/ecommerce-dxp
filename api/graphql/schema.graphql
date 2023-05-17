@@ -1,22 +1,6 @@
-"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
-scalar DateTime
-    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+type Query
+type Mutation
 
-#! This is where all operations are loaded
-"Indicates what fields are available at the top level of a query operation."
-type Query {
-    "Get all products"
-    products: [Product!]! @all #! Get all
-    "Find a single user by an identifying attribute."
-    product(id: ID @eq): Product @find #! Find by
-}
-
-#! This is the template with all the colums in the database
-"Account of a person who utilizes this application."
-type Product { #! The type name must be same as the model name
-    "Unique primary key."
-    id: ID!
-
-    "Non-unique name."
-    name: String!
-}
+#import user.graphql
+#import product.graphql
+#import review.graphql

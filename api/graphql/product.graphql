@@ -1,0 +1,31 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+#! The available data. The GraphQL client will request the neccesarly data though
+type Product { #! The type name must be same as the model name
+    "The product ID"
+    id: ID!
+
+    "The product name"
+    name: String!
+
+    "The product reviews"
+    reviews: [Review!]! @hasMany #! The relationship name must be same as the model name
+}
+
+#! List of all possible queries that the client can execute. They all are about the `Product` type.
+extend type Query {
+    "Get all products"
+    products: [Product!]! @all #! Get all
+    "Get a bunch of products by their names"
+    productsByName(name: String! @like(template: "%{}%")): [Product!]! @all #! Get products matching the given name
+    "Paginate products"
+    getPaginatedProducts(first: Int = 5, page: Int = 1): [Product!]! @paginate #! Paginate products
+    "Find a single user by an identifying attribute."
+    product(id: ID @eq): Product @find #! Find product by exact ID
+}
+
+extend type Mutation {
+    createProduct(name: String!): Product! @create
+}

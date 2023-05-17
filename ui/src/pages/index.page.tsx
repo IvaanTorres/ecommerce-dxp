@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NextPage } from 'next'
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
-import { Typography } from '@mui/material'
+import { Box, Grid, Paper, Typography } from '@mui/material'
 import moment from 'moment'
 import _ from 'lodash'
 import Link from 'next/link'
@@ -72,6 +70,27 @@ const Home: NextPage<Props> = ({ product }) => {
       >
         Testing message
       </h1>
+      <Box style={{ flexGrow: 1 }}>
+        <Grid
+          container
+          /* columnSpacing={2}
+          rowSpacing={4} */
+          spacing={2}
+        >
+          <Grid item lg={6} md={4} xs={3}>
+            <Paper>Test</Paper>
+          </Grid>
+          <Grid item lg={6} md={4} xs={3}>
+            <Paper>Test</Paper>
+          </Grid>
+          <Grid item lg={6} md={4} xs={3}>
+            <Paper>Test</Paper>
+          </Grid>
+          <Grid item lg={6} md={4} xs={3}>
+            <Paper>Test</Paper>
+          </Grid>
+        </Grid>
+      </Box>
       <Link href="about/">Go to about</Link>
       {product.error && (
         <div data-testid="error">Error: {product.error.message}</div>
@@ -89,9 +108,7 @@ const Home: NextPage<Props> = ({ product }) => {
           </Button>
           <Test title="Test title" />
           <Typography variant="h4" data-testid="productName">
-            Product name:{' '}
-            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
-            {product.data.product.name}
+            Product name: {product.data.product.name}
           </Typography>
           <p>{time}</p>
           <p>Counter of the component: {count?.value}</p>
@@ -104,10 +121,6 @@ const Home: NextPage<Props> = ({ product }) => {
     </div>
   )
 }
-
-/* Home.defaultProps = {
-  data: undefined,
-} */
 
 export const getServerSideProps = async () => {
   const client2: ApolloClient<NormalizedCacheObject> = initializeApollo()
