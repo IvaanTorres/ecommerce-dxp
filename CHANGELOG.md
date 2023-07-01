@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/IvaanTorres/ecommerce/compare/v1.2.0...v1.3.0) (2023-07-01)
+
+
+### Features
+
+* **graphql-schemas:** Create graphql schemas for the front office ([#30](https://github.com/IvaanTorres/ecommerce/issues/30)) ([92ae799](https://github.com/IvaanTorres/ecommerce/commit/92ae799ae7d0802641853ad0a6cb66f02c765678))
+* **migrations:** create and structure the database ([#27](https://github.com/IvaanTorres/ecommerce/issues/27)) ([ff1b32c](https://github.com/IvaanTorres/ecommerce/commit/ff1b32ccc127ef152021367c3c619c2f77e843a0))
+
+
+### Documentation
+
+* **readme:** modify readme ([#26](https://github.com/IvaanTorres/ecommerce/issues/26)) ([5cae484](https://github.com/IvaanTorres/ecommerce/commit/5cae484ef470634d59c1cb10a6fb355427c47af1))
+
 ## [1.2.0](https://github.com/IvaanTorres/ecommerce/compare/v1.1.0...v1.2.0) (2022-10-08)
 
 
