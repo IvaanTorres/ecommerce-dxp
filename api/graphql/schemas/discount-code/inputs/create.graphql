@@ -1,0 +1,6 @@
+input CreateDiscountCodeInput {
+    title: String!
+    description: String
+    percent: Int!
+    code: String!
+}

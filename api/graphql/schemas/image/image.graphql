@@ -1,0 +1,19 @@
+type Image {
+    id: ID!
+    name: String!
+    path: String!
+    product: Product! @belongsTo
+    brand: Brand! @belongsTo
+    categories: [Category!]! @belongsToMany
+}
+
+extend type Query {
+    images: [Image!]! @all
+    image(id: ID! @eq): Image! @find
+}
+
+extend type Mutation {
+    createImage(input: CreateImageInput! @spread): Image! @create
+    updateImage(input: UpdateImageInput! @spread): Image! @update
+    deleteImage(id: ID! @eq): Image! @delete
+}

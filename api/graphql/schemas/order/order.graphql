@@ -1,0 +1,15 @@
+type Order {
+  id: ID
+  user: User
+  packs: [Pack] @hasMany
+}
+
+extend type Query {
+  orders: [Order] @all
+  order(id: ID! @eq): Order @find
+}
+
+# TODO: Add order mutations such as changing status, etc.
+# extend type Mutation {
+# 
+# }

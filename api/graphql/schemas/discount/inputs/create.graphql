@@ -1,0 +1,20 @@
+input CreateDiscountInput {
+    title: String!
+    description: String
+    percent: Int!
+    products: CreateDiscount_ProductsHasMany
+    categories: CreateDiscount_CategoriesHasMany
+    brands: CreateDiscount_BrandsHasMany
+}
+
+input CreateDiscount_BrandsHasMany {
+    connect: [ID!]!
+}
+
+input CreateDiscount_CategoriesHasMany {
+    connect: [ID!]!
+}
+
+input CreateDiscount_ProductsHasMany {
+    connect: [ID!]!
+}

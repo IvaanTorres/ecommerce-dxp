@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('packs', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantity')->min(1)->default(1);
             $table->timestamps();
         });
     }

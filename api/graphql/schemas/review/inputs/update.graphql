@@ -1,0 +1,17 @@
+input UpdateReviewInput {
+    id: ID! @eq
+    title: String
+    body: String
+    rating: Int
+    # product: UpdateReview_ProductBelongsTo
+    # user: UpdateReview_UserBelongsTo
+}
+
+# TODO: When the review is created already and the user wants to update it, the product and user fields must be ignored since it has to be the same as the original review
+# input UpdateReview_ProductBelongsTo {
+    # connect: ID!
+# }
+
+# input UpdateReview_UserBelongsTo {
+    # connect: ID!
+# }

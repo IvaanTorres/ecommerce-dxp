@@ -1,0 +1,24 @@
+input UpdateDiscountInput {
+    id: ID!
+    title: String
+    description: String
+    percent: Int
+    products: UpdateDiscount_ProductsHasMany
+    categories: UpdateDiscount_CategoriesHasMany
+    brands: UpdateDiscount_BrandsHasMany
+}
+
+input UpdateDiscount_BrandsHasMany {
+    connect: [ID!]
+    disconnect: Boolean
+}
+
+input UpdateDiscount_CategoriesHasMany {
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input UpdateDiscount_ProductsHasMany {
+    connect: [ID!]
+    disconnect: Boolean
+}

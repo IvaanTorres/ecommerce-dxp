@@ -1,0 +1,28 @@
+type User {
+    id: ID
+    name: String
+    email: String
+    password: String
+    remember_token: String
+    role: Role @belongsTo
+    gender: Gender @belongsTo
+    reviews: [Review!] @hasMany
+    cart: Cart @hasOne
+    wishlist: Wishlist @hasOne
+}
+
+extend type Query {
+    "Find user by id"
+    user(id: ID! @eq): User @find
+    "Get all users"
+    users: [User!]! @all
+}
+
+extend type Mutation {
+    "Create new user"
+    createUser(input: CreateUserInput! @spread): User! @create
+    "Update user"
+    updateUser(input: UpdateUserInput! @spread): User! @update
+    "Delete user"
+    deleteUser(id: ID! @eq): User! @delete
+}

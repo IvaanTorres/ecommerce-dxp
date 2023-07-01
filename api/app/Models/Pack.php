@@ -13,17 +13,14 @@ class Pack extends Model
 {
     use HasFactory;
 
-    /* M-M */
-    public function orders(): BelongsToMany {
-        return $this->belongsToMany(Order::class, 'order_pack', 'pack_id', 'order_id');
+    public function order(): BelongsTo {
+        return $this->belongsTo(Order::class, 'order_id');
     }
-    
-    /* M-1 */
+
     public function cart(): BelongsTo {
         return $this->belongsTo(Cart::class, 'cart_id');
     }
-    
-    /* 1-1 */
+
     public function product(): BelongsTo { /* Type of product */
         return $this->belongsTo(Product::class, 'product_id');
     }

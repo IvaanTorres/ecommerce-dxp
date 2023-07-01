@@ -1,0 +1,8 @@
+input DeleteDiscountCodeInput {
+    id: ID!
+    carts: DeleteDiscountCode_CartsHasMany
+}
+
+input DeleteDiscountCode_CartsHasMany {
+    disconnect: [ID!]!
+}

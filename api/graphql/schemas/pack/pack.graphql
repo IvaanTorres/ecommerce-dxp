@@ -1,0 +1,29 @@
+type Pack {
+  id: ID
+  quantity: Int
+  product: Product @belongsTo
+  order: Order @belongsTo
+  cart: Cart @belongsTo
+}
+
+extend type Query {
+  pack(id: ID! @eq): Pack @find
+  packs: [Pack!]! @all
+}
+
+extend type Mutation {
+  createPack(
+    quantity: Int!
+    productId: ID!
+    orderId: ID!
+    cartId: ID!
+  ): Pack @create
+  updatePack(
+    id: ID!
+    quantity: Int
+    productId: ID
+    orderId: ID
+    cartId: ID
+  ): Pack @update
+  deletePack(id: ID! @eq): Pack @delete
+}

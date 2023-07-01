@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('packs', function (Blueprint $table) {
-            $table->foreignId('cart_id')->constrained('carts');
+            $table->foreignId('cart_id')->nullable()->constrained('carts');
             $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('order_id')->nullable()->constrained('orders');
         });
     }
 

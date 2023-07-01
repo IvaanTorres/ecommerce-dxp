@@ -1,0 +1,31 @@
+input DeleteBrandInput {
+    id: ID! @eq
+    images: DeleteBrand_ImagesHasMany
+    categories: DeleteBrand_CategoriesHasMany
+    discount: DeleteBrand_DiscountBelongsTo
+}
+
+# TODO: Check when uploading images
+input DeleteBrand_ImagesHasMany {
+    disconnect: Boolean
+    delete: [DeleteBrand_Images_Delete!]
+}
+
+input DeleteBrand_Images_Delete {
+    id: [ID!]
+}
+
+input DeleteBrand_CategoriesHasMany {
+    disconnect: Boolean
+    delete: [DeleteBrand_Categories_Delete!] # TODO: Check how to delete categories and subcategories and products
+}
+
+input DeleteBrand_Categories_Delete {
+    id: [ID!]
+}
+
+input DeleteBrand_DiscountBelongsTo {
+    disconnect: Boolean
+    delete: ID
+}
+

@@ -1,0 +1,17 @@
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+    role: CreateUser_RoleBelongsTo!
+    gender: CreateUser_GenderBelongsTo!
+}
+
+# Role
+input CreateUser_RoleBelongsTo {
+    connect: ID!
+}
+
+# Gender
+input CreateUser_GenderBelongsTo {
+    connect: ID!
+}

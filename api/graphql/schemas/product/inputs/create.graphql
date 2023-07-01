@@ -1,0 +1,31 @@
+input CreateProductInput {
+    ref: String!
+    name: String!
+    description: String
+    price: Float!
+    weight: Float!
+    stock: Int!
+    reviews: CreateProduct_ReviewHasMany
+    images: CreateProduct_ImageHasMany!
+    categories: CreateProduct_CategoryBelongsToMany!
+    discount: CreateProduct_DiscountBelongsTo
+}
+
+input CreateProduct_ReviewHasMany {
+    connect: [ID!]!
+}
+
+input CreateProduct_ImageHasMany {
+    connect: [ID!]
+}
+
+input CreateProduct_CategoryBelongsToMany {
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input CreateProduct_DiscountBelongsTo {
+    # * The discount cannot be updated, it can be just linked.
+    # * In order to update the value, go to the discount itself (ex: /discounts/1)
+    connect: ID!
+}

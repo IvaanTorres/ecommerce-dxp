@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\ReviewFactory;
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +17,19 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        // ReviewFactory::factory(10)
-        //     ->create();
+        Review::factory()
+            ->count(50)
+            ->afterMaking(function (Review $review) {
+                // Give random product
+                $product = Product::inRandomOrder()->first();
+                $review->product()->associate($product);
+
+                //Give random user
+                $user = User::inRandomOrder()->first();
+                $review->user()->associate($user);
+
+                $review->save();
+            })
+            ->create();
     }
 }

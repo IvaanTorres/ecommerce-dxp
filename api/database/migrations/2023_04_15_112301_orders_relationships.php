@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
+            // TODO: Add payment method
+            // TODO: Add shipping method
         });
     }
 

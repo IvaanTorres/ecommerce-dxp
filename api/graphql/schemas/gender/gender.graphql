@@ -1,0 +1,12 @@
+type Gender {
+    id: ID
+    value: String
+    users: [User!] @hasMany
+}
+
+extend type Query {
+    "Find gender by id"
+    gender(id: ID! @eq): Gender! @find
+    "Get all genders"
+    genders: [Gender!]! @all
+}

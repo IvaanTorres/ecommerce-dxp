@@ -1,0 +1,20 @@
+type Discount {
+    id: ID
+    title: String
+    description: String
+    percent: Int
+    products: [Product!] @hasMany
+    categories: [Category!] @hasMany
+    brands: [Brand!] @hasMany
+}
+
+extend type Query {
+    discount(id: ID! @eq): Discount! @find
+    discounts: [Discount!]! @all
+}
+
+extend type Mutation {
+    createDiscount(input: CreateDiscountInput! @spread): Discount! @create
+    updateDiscount(input: UpdateDiscountInput! @spread): Discount! @update
+    deleteDiscount(input: DeleteDiscountInput! @spread): Discount! @delete
+}

@@ -22,34 +22,30 @@ class User extends Model
      */
     protected $fillable = [
         'name',
+        'email',
+        'password',
     ];
 
-    /* 1-M */
     public function reviews(): HasMany {
         return $this->hasMany(Review::class, 'user_id');
     }
 
-    /* 1-1 */
     public function cart(): HasOne {
         return $this->hasOne(Cart::class, 'user_id');
     }
 
-    /* 1-M */
     public function orders(): HasMany {
         return $this->hasMany(Order::class, 'user_id');
     }
 
-    /* 1-1 */
-    public function whishlist(): HasOne {
-        return $this->hasOne(Whishlist::class, 'user_id');
+    public function wishlist(): HasOne {
+        return $this->hasOne(Wishlist::class, 'user_id');
     }
 
-    /* 1-1 */
     public function role(): BelongsTo {
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    // 1-1
     public function gender(): BelongsTo {
         return $this->belongsTo(Gender::class, 'gender_id');
     }

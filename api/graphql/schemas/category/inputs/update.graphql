@@ -1,0 +1,23 @@
+input UpdateCategoryInput {
+    id: ID! @eq
+    name: String
+    description: String
+    products: UpdateCategory_ProductsBelongsToMany
+    images: UpdateCategory_ImagesBelongsToMany
+    discount: UpdateCategory_DiscountBelongsTo
+}
+
+input UpdateCategory_ProductsBelongsToMany {
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input UpdateCategory_ImagesBelongsToMany {
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input UpdateCategory_DiscountBelongsTo {
+    connect: ID
+    disconnect: Boolean
+}

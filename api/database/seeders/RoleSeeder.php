@@ -16,14 +16,14 @@ class RoleSeeder extends Seeder
     public function run()
     {
         Role::factory()
-            ->count(3)
-            ->sequence(fn ($sequence) => [
-                'name' => $sequence->index === 0 
-                    ? 'admin' 
-                    : ($sequence->index === 1 
-                        ? 'user' 
-                        : 'guest')
-            ])
+            ->count(2)
+            // ->sequence(fn ($sequence) => [
+            //     'name' => $sequence->index === 0 
+            //         ? 'admin' 
+            //         : ($sequence->index === 1 
+            //             ? 'user' 
+            //             : 'guest')
+            // ])
             ->create();
     }
 }

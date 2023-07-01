@@ -1,0 +1,18 @@
+input UpdateUserInput {
+    id: ID! @eq
+    name: String
+    email: String
+    password: String
+    role: UpdateUser_RoleBelongsTo
+    gender: UpdateUser_GenderBelongsTo
+}
+
+# Role
+input UpdateUser_RoleBelongsTo {
+    connect: ID!
+}
+
+# Gender
+input UpdateUser_GenderBelongsTo {
+    connect: ID!
+}

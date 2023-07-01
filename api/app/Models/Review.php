@@ -11,17 +11,14 @@ class Review extends Model
 {
     use HasFactory;
 
-    /* M-1 */
     public function product(): BelongsTo {
         return $this->belongsTo(Product::class, 'product_id');
     }
 
-    /* M-1 */
-    public function star(): BelongsTo {
-        return $this->belongsTo(Star::class, 'nb_stars_id');
-    }
+    // public function star(): BelongsTo {
+    //     return $this->belongsTo(Star::class, 'nb_stars_id');
+    // }
 
-    /* M-1 */
     public function user(): BelongsTo {
         return $this->belongsTo(User::class, 'user_id');
     }

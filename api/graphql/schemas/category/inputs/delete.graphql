@@ -1,0 +1,15 @@
+input DeleteCategoryInput {
+    id: ID! @eq
+    products: DeleteCategory_ProductsBelongsToMany
+    images: DeleteCategory_ImagesBelongsToMany
+}
+
+input DeleteCategory_ProductsBelongsToMany {
+    disconnect: [ID!]
+    delete: [ID!]
+}
+
+input DeleteCategory_ImagesBelongsToMany {
+    disconnect: [ID!]
+    delete: [ID!]
+}

@@ -17,10 +17,10 @@ class DiscountCodeFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->name(),
-            "description" => $this->faker->text(),
-            "percentage" => $this->faker->randomFloat(2, 0, 100),
-            "code" => $this->faker->name(),
+            "title" => fake()->word(),
+            "description" => fake()->text(),
+            "percent" => fake()->numberBetween(1, 100),
+            "code" => fake()->regexify('[A-Za-z0-9]{8}'),
         ];
     }
 }

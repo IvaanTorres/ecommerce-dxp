@@ -1,0 +1,22 @@
+input UpdateImageInput {
+    id: ID! @eq
+    name: String
+    path: String
+    product: UpdateImage_ProductBelongsTo
+    brand: UpdateImage_BrandBelongsTo
+    categories: [UpdateImage_CategoriesBelongsToMany!]
+}
+
+input UpdateImage_BrandBelongsTo {
+    connect: ID!
+}
+
+input UpdateImage_CategoriesBelongsToMany {
+    connect: [ID!]
+}
+
+input UpdateImage_ProductBelongsTo {
+    connect: ID!
+}
+
+

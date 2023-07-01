@@ -1,0 +1,40 @@
+input UpdateBrandInput {
+    id: ID! @eq
+    name: String
+    description: String
+    images: UpdateBrand_ImagesHasMany
+    categories: UpdateBrand_CategoriesHasMany
+    discount: UpdateBrand_DiscountBelongsTo
+}
+
+# TODO: Check when uploading images
+input UpdateBrand_ImagesHasMany {
+    connect: [ID!]
+    disconnect: [ID!]
+    update: [UpdateBrand_Images_Update!]
+}
+
+input UpdateBrand_Images_Update {
+    id: [ID!]
+}
+
+input UpdateBrand_CategoriesHasMany {
+    connect: [ID!]
+    disconnect: [ID!]
+    update: [UpdateBrand_Categories_Update!]
+}
+
+input UpdateBrand_Categories_Update {
+    id: [ID!]
+}
+
+input UpdateBrand_DiscountBelongsTo {
+    connect: ID
+    disconnect: Boolean
+    update: UpdateBrand_Discount_Update
+}
+
+input UpdateBrand_Discount_Update {
+    id: ID!
+}
+

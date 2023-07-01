@@ -1,6 +1,44 @@
 type Query
 type Mutation
 
-#import user.graphql
-#import product.graphql
-#import review.graphql
+# TODO: import all the graphql files here and add them to the schema using #import
+
+#import schemas/gender/*.graphql
+
+#import schemas/product/*.graphql
+#import schemas/product/inputs/*.graphql
+
+#import schemas/review/*.graphql
+#import schemas/review/inputs/*.graphql
+
+#import schemas/role/*.graphql
+
+#import schemas/user/*.graphql
+#import schemas/user/inputs/*.graphql
+
+#import schemas/image/*.graphql
+#import schemas/image/inputs/*.graphql
+
+#import schemas/category/*.graphql
+#import schemas/category/inputs/*.graphql
+
+#import schemas/brand/*.graphql
+#import schemas/brand/inputs/*.graphql
+
+#import schemas/discount/*.graphql
+#import schemas/discount/inputs/*.graphql
+
+#import schemas/discount-code/*.graphql
+#import schemas/discount-code/inputs/*.graphql
+
+#import schemas/wishlist/*.graphql
+#import schemas/wishlist/inputs/*.graphql
+
+#import schemas/cart/*.graphql
+#import schemas/cart/inputs/*.graphql
+
+#import schemas/pack/*.graphql
+#import schemas/pack/inputs/*.graphql
+
+#import schemas/order/*.graphql
+#import schemas/order/inputs/*.graphql

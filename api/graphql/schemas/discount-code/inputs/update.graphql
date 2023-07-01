@@ -1,0 +1,7 @@
+input UpdateDiscountCodeInput {
+    id: ID!
+    title: String
+    description: String
+    percent: Int
+    code: String
+}

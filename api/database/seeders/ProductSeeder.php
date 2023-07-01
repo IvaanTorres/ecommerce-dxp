@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
+use App\Models\Discount;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Star;
@@ -17,17 +19,19 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        // TODO: Random nb of reviews
+        Product::factory()
+            ->afterMaking(function (Product $product) {
+                // Give random brand
+                $brand = Brand::inRandomOrder()->first();
+                $product->brand()->associate($brand);
 
-        // Product::factory()
-        // ->count(10)
-        // ->has(
-        //     Review::factory()
-        //         ->count(3)
-        // )
-        // ->sequence(fn ($sequence) => [
-        //     'nb_reviews' => 3,
-        // ])
-        // ->create();
+                // Give random discount
+                $discount = Discount::inRandomOrder()->first();
+                $product->discount()->associate($discount);
+
+                $product->save();
+            })
+            ->count(200)
+            ->create();
     }
 }

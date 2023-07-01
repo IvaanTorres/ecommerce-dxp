@@ -1,0 +1,21 @@
+type Category {
+  id: ID!
+  name: String!
+  description: String
+  products: [Product!]! @belongsToMany
+  images: [Image!]! @belongsToMany
+  discount: Discount @belongsTo
+  children: [Category!]! @hasMany
+  parent: Category @belongsTo
+}
+
+extend type Query {
+  category(id: ID! @eq): Category! @find
+  categories: [Category!]! @all
+}
+
+extend type Mutation {
+  createCategory(input: CreateCategoryInput! @spread): Category! @create
+  updateCategory(input: UpdateCategoryInput! @spread): Category! @update
+  deleteCategory(input: DeleteCategoryInput! @spread): Category! @delete
+}

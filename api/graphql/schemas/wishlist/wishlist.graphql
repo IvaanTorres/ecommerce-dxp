@@ -1,0 +1,15 @@
+type Wishlist {
+    id: ID
+    user: User @belongsTo
+    products: [Product!] @belongsToMany
+}
+
+extend type Query {
+    wishlists: [Wishlist!]! @all
+    wishlist(id: ID! @eq): Wishlist @find
+}
+
+# TODO: Add here the mutations to add, update and delete products from the wishlist
+# extend type Mutation {
+# 
+# }

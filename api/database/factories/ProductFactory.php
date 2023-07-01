@@ -21,14 +21,8 @@ class ProductFactory extends Factory
             'description' => fake()->paragraph(3),
             'price' => fake()->randomFloat(2, 0, 300),
             'stock' => fake()->randomNumber(3, false),
-            'nb_stars_id' => fake()->numberBetween(1, 6),
-            // TODO: Get nb
-            'nb_reviews' => fake()->numberBetween(0, 10),
-            // 'brand_id' => fake()->numberBetween(1, 5),
-            'discount_id' => fake()->numberBetween(1, 10),
-            'discount_priority' => 3,
+            'rating' => fake()->numberBetween(1, 5),
             'weight' => fake()->randomNumber(3, false),
-            'final_price' => fake()->randomFloat(2, 0, 300),
             'ref' => 'ref-' . fake()->uuid(),
         ];
     }

@@ -1,0 +1,30 @@
+type Review {
+    "Review id"
+    id: ID
+    "Review title"
+    title: String
+    "Review body"
+    body: String
+    "Star rating linked to review"
+    rating: Int
+    "Product linked to review"
+    product: Product @belongsTo
+    "User linked to review"
+    user: User @belongsTo
+}
+
+extend type Query {
+    "Find review by id"
+    reviews: [Review!]! @all
+    "Find review by id"
+    review(id: ID! @eq): Review @find
+}
+
+extend type Mutation {
+    "Create new review"
+    createReview(input: CreateReviewInput! @spread): Review! @create
+    "Update review"
+    updateReview(input: UpdateReviewInput! @spread): Review! @update
+    "Delete review by id"
+    deleteReview(id: ID! @eq): Review! @delete
+}

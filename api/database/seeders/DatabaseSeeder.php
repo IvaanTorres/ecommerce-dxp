@@ -19,18 +19,20 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            // Users
-            // GenderSeeder::class,
-            // RoleSeeder::class,
+            // Acocounting side
+            RoleSeeder::class,
+            GenderSeeder::class,
+            DiscountCodeSeeder::class,
             UserSeeder::class,
 
-            // Discounts
-            StarSeeder::class,
-            // DiscountSeeder::class,
-
-            // Products
+            // Front Office side
+            DiscountSeeder::class,
             BrandSeeder::class,
-            // ProductSeeder::class,
+            ProductSeeder::class,
+            ReviewSeeder::class,
+            CategorySeeder::class,
+            OrderSeeder::class,
+            PackSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
@@ -41,7 +43,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Product::factory(10)
-        // ->sequence(fn ($sequence) => 
+        // ->sequence(fn ($sequence) =>
         //     [
         //         'name' => 'Product '.$sequence->index + 1,
         //         'description' => 'Description '.$sequence->index + 1,

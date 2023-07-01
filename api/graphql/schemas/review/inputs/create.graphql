@@ -1,0 +1,15 @@
+input CreateReviewInput {
+    title: String!
+    body: String!
+    rating: Int!
+    product: CreateReview_ProductBelongsTo!
+    user: CreateReview_UserBelongsTo!
+}
+
+input CreateReview_ProductBelongsTo {
+    connect: ID!
+}
+
+input CreateReview_UserBelongsTo {
+    connect: ID!
+}

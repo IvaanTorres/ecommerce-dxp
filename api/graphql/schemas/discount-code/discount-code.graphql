@@ -1,0 +1,19 @@
+type DiscountCode {
+    id: ID
+    title: String
+    description: String
+    percent: Int
+    code: String
+    carts: [Cart] @hasMany
+}
+
+extend type Query {
+    discountCode(id: ID! @eq): DiscountCode! @find
+    discountCodes: [DiscountCode!]! @all
+}
+
+extend type Mutation {
+    createDiscountCode(input: CreateDiscountCodeInput! @spread): DiscountCode! @create
+    updateDiscountCode(input: UpdateDiscountCodeInput! @spread): DiscountCode! @update
+    deleteDiscountCode(input: DeleteDiscountCodeInput! @spread): DiscountCode! @delete
+}

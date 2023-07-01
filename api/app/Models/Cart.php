@@ -12,14 +12,16 @@ class Cart extends Model
 {
     use HasFactory;
 
-    /* 1-1 */
     public function user(): BelongsTo {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /* 1-M */
     public function packs(): HasMany {
         return $this->hasMany(Pack::class, 'cart_id');
     }
-    
+
+    public function discountCode(): BelongsTo {
+        return $this->belongsTo(DiscountCode::class, 'discount_code_id');
+    }
+
 }

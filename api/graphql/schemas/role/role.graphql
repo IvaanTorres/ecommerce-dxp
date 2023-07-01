@@ -1,0 +1,35 @@
+type Role {
+    id: ID
+    name: String
+    description: String
+    slug: String
+    level: Int
+    users: [User!] @hasMany
+}
+
+extend type Query {
+    "Find role by id"
+    role(id: ID! @eq): Role @find
+    "Get all roles"
+    roles: [Role!]! @all
+}
+
+extend type Mutation {
+    "Create new role"
+    createRole(
+        name: String!
+        description: String
+        slug: String!
+        level: Int!
+    ): Role! @create
+    "Update role"
+    updateRole(
+        id: ID! @eq
+        name: String
+        description: String
+        slug: String
+        level: Int
+    ): Role! @update
+    "Delete role"
+    deleteRole(id: ID! @eq): Role! @delete
+}

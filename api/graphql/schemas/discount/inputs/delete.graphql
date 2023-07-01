@@ -1,0 +1,18 @@
+input DeleteDiscountInput {
+    id: ID!
+    products: DeleteDiscount_ProductsHasMany
+    categories: DeleteDiscount_CategoriesHasMany
+    brands: DeleteDiscount_BrandsHasMany
+}
+
+input DeleteDiscount_BrandsHasMany {
+    disconnect: Boolean
+}
+
+input DeleteDiscount_CategoriesHasMany {
+    disconnect: [ID!]!
+}
+
+input DeleteDiscount_ProductsHasMany {
+    disconnect: Boolean
+}

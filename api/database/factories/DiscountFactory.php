@@ -17,9 +17,9 @@ class DiscountFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->name(),
-            "description" => $this->faker->text(),
-            "percentage" => $this->faker->numberBetween(1, 100),
+            "title" => fake()->word(),
+            "description" => fake()->text(),
+            "percent" => fake()->numberBetween(1, 100),
         ];
     }
 }

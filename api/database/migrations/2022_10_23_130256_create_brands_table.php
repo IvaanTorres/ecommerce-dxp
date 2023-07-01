@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->bigInteger('discount_priority')->default(1);
+            // $table->bigInteger('discount_priority')->default(1);
             $table->timestamps();
         });
     }

@@ -1,0 +1,21 @@
+input CreateImageInput {
+    name: String!
+    path: String!
+    product: CreateImage_ProductBelongsTo
+    brand: CreateImage_BrandBelongsTo
+    categories: [CreateImage_CategoriesBelongsToMany!]
+}
+
+input CreateImage_BrandBelongsTo {
+    connect: ID!
+}
+
+input CreateImage_CategoriesBelongsToMany {
+    connect: [ID!]
+}
+
+input CreateImage_ProductBelongsTo {
+    connect: ID!
+}
+
+

@@ -1,0 +1,19 @@
+type Brand {
+    id: ID!
+    name: String!
+    description: String
+    images: [Image!]! @hasMany
+    products: [Product!]! @hasMany
+    discount: Discount @belongsTo
+}
+
+extend type Query {
+    brands: [Brand!]! @all
+    brand(id: ID!): Brand! @find
+}
+
+extend type Mutation {
+    createBrand(input: CreateBrandInput! @spread): Brand! @create
+    updateBrand(input: UpdateBrandInput! @spread): Brand! @update
+    deleteBrand(input: DeleteBrandInput! @spread): Brand! @delete # TODO: It may also delete all its categories and products
+}

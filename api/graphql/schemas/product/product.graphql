@@ -1,0 +1,49 @@
+type Product { #! The type name must be same as the model name
+    "The product ID"
+    id: ID
+    "The product reference"
+    ref: String
+    "The product name"
+    name: String
+    "The product description"
+    description: String
+    "The product price"
+    price: Float
+    "The product final price after discount"
+    final_price: Float @method(name: "getFinalPrice")
+    "The product weight"
+    weight: Float
+    "The product stock"
+    stock: Int
+    "The number of reviews"
+    nb_reviews: Int @count(relation: "reviews")
+    "The stars rating of the product"
+    rating: Int
+    "The product reviews"
+    reviews: [Review!] @hasMany #! The relationship name must be same as the model name
+    "The product images"
+    images: [Image!] @hasMany
+    "The product categories"
+    categories: [Category!] @belongsToMany
+    "The product discount"
+    discount: Discount @belongsTo
+    "The product brand"
+    brand: Brand @belongsTo
+    "The wishlists that contain the product"
+    wishlists: [Wishlist!] @belongsToMany
+    "The packs that contain the product"
+    packs: [Pack!] @hasMany
+}
+
+extend type Query {
+    "Get all products"
+    products: [Product!]! @all #! Get all
+    "Find a single user by an identifying attribute."
+    product(id: ID @eq): Product @find #! Find product by exact ID
+}
+
+extend type Mutation {
+    createProduct(input: CreateProductInput! @spread): Product! @create
+    updateProduct(input: UpdateProductInput! @spread): Product! @update
+    deleteProduct(id: ID! @eq): Product! @delete
+}

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            // Normally there is no norñal fields but relationships
             $table->timestamps();
         });
     }

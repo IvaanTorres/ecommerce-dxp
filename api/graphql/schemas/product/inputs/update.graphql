@@ -1,0 +1,32 @@
+input UpdateProductInput {
+    id: ID! @eq
+    ref: String
+    name: String
+    description: String
+    price: Float
+    weight: Float
+    stock: Int
+    # rating: Int
+    reviews: UpdateProduct_ReviewHasMany
+    images: UpdateProduct_ImageHasMany
+    categories: UpdateProduct_CategoryBelongsToMany
+    discount: UpdateProduct_DiscountBelongsTo
+}
+
+input UpdateProduct_ReviewHasMany {
+    connect: [ID!]!
+}
+
+input UpdateProduct_ImageHasMany {
+    connect: [ID!]
+    # update: [UpdateImageInput!]
+}
+
+input UpdateProduct_CategoryBelongsToMany {
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input UpdateProduct_DiscountBelongsTo {
+    connect: ID!
+}

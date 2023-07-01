@@ -18,9 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
-            $table->integer('percentage')->min(0)->max(100);
-            // TODO Add polymorphic relationship for normal discounts and discount codes
-            // TODO: The normal ones have a title and a description, the discount codes have a code
+            $table->integer('percent')->min(0)->max(100);
+            // $table->integer('priority')->nullable()->min(1);
             $table->timestamps();
         });
     }

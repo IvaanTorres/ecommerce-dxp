@@ -19,9 +19,7 @@ class ReviewFactory extends Factory
         return [
             'title' => fake()->words(2, true),
             'body' => fake()->paragraph(3),
-            'nb_stars_id' => fake()->numberBetween(1, 6),
-            'user_id' => fake()->numberBetween(1, 3),
-            'product_id' => fake()->numberBetween(1, 10),
+            'rating' => fake()->numberBetween(1, 5),
         ];
     }
 }

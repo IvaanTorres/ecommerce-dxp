@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,9 +21,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable(); // When the user has verified though email
             $table->string('password');
             $table->rememberToken(); // TODO: Set token and remember token / add oauth
-            // $table->bigInteger('cart_id')->nullable()->unique(); // The cart id
-            // $table->bigInteger('wishlist_id')->nullable()->unique(); // The wishlist id
-            // $table->array('products')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
+        DB::statement('DROP TABLE if exists wishlists cascade;');
         Schema::dropIfExists('users');
     }
 };

@@ -1,0 +1,31 @@
+input CreateBrandInput {
+    name: String!
+    description: String
+    images: CreateBrand_ImagesHasMany
+    categories: CreateBrand_CategoriesHasMany
+    discount: CreateBrand_DiscountBelongsTo
+}
+
+input CreateBrand_ImagesHasMany {
+    connect: [ID!]
+}
+
+input CreateBrand_CategoriesHasMany {
+    connect: [ID!]
+    create: [CreateBrand_Categories_Create!]
+}
+
+input CreateBrand_Categories_Create {
+    name: String!
+}
+
+input CreateBrand_DiscountBelongsTo {
+    connect: ID
+    create: CreateBrand_Discount_Create
+}
+
+input CreateBrand_Discount_Create {
+    name: String!
+    value: Int!
+}
+

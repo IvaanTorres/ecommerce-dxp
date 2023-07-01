@@ -1,0 +1,22 @@
+input CreateCategoryInput {
+    name: String!
+    description: String
+    products: CreateCategory_ProductsBelongsToMany
+    images: CreateCategory_ImagesBelongsToMany
+}
+
+input CreateCategory_ProductsBelongsToMany {
+    connect: [ID!]
+}
+
+input CreateCategory_ImagesBelongsToMany {
+    connect: [ID!]
+    create: [CreateCategory_ImagesBelongsToMany_Create!]
+}
+
+# TODO: Check how to make it possible when uploading an image
+input CreateCategory_ImagesBelongsToMany_Create {
+    id: ID
+    url: String!
+    alt: String
+}

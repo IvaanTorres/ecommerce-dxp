@@ -17,10 +17,8 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            "name" => $this->faker->name(),
-            "description" => $this->faker->text(),
-            "discount_id" => 1, // TODO: change this to a random number between 1 and 10
-            "discount_priority" => 1,
+            "name" => fake()->word(),
+            "description" => fake()->text(),
         ];
     }
 }

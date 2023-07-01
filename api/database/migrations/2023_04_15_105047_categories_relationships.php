@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->foreignId('discount_id')->constrained('discounts')->delete('cascade');
-            $table->foreignId('brand_id')->constrained('brands');
+            $table->foreignId('discount_id')->nullable()->constrained('discounts')->delete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories');
         });
     }
 

@@ -1,0 +1,16 @@
+type Cart {
+  id: ID
+  user: User @belongsTo
+  packs: [Pack!] @hasMany
+  discount_code: DiscountCode @belongsTo
+}
+
+extend type Query {
+  carts: [Cart!]! @all
+  cart(id: ID! @eq): Cart @find
+}
+
+# TODO: Add cart checkout mutation, etc
+# extend type Mutation {
+# 
+# }
