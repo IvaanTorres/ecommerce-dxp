@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
+use GraphQL\GraphQL;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpFoundation\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -43,8 +45,8 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (Throwable $e, $request) {
+            // Register custom exception handling here
         });
     }
 }
