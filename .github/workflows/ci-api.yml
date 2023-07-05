@@ -58,7 +58,7 @@ jobs:
           composer install
 
       - name: Run migrations
-        run: railway run php artisan migrate:fresh --seed
+        run: php artisan migrate:fresh --seed
 
       # # Install artisan CLI as global with composer
       # - name: Install artisan CLI
