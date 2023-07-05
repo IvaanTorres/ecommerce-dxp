@@ -60,8 +60,8 @@ jobs:
           ls -la
           php artisan --version
       
-      # - name: Run migrations
-      #   run: php artisan migrate:fresh --seed
+      - name: Run migrations
+        run: ls -la
 
       # # Install artisan CLI as global with composer
       # - name: Install artisan CLI
