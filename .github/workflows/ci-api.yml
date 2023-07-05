@@ -16,8 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - '7.4'
-          - '8.0'
           - '8.1'
         dependency-versions:
           - 'lowest'
@@ -56,3 +54,7 @@ jobs:
 
       - name: Deployment to Railway
         run: railway up
+
+      # Run laravel migrations with seeders
+      - name: Run migrations
+        run: railway run php artisan migrate:fresh --seed
