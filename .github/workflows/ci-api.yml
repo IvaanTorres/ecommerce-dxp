@@ -60,7 +60,7 @@ jobs:
       - name: Run migrations
         run: |
           cd api/
-          railway run php artisan migrate:fresh --seed
+          railway run php artisan migrate:fresh --seed -n
 
       # # Install artisan CLI as global with composer
       # - name: Install artisan CLI
