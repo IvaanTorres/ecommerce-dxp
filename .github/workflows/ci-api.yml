@@ -52,9 +52,13 @@ jobs:
       - name: Install the Railway CLI
         run: npm i -g @railway/cli
 
-      # List files
-      - name: List files
-        run: ls -la
+      - name: Install dependencies
+        run: |
+          cd api/
+          composer install
+
+      - name: Run migrations
+        run: railway run php artisan migrate:fresh --seed
 
       # # Install artisan CLI as global with composer
       # - name: Install artisan CLI
@@ -62,7 +66,3 @@ jobs:
 
       - name: Deployment to Railway
         run: railway up
-
-      # Run laravel migrations with seeders
-      - name: Run migrations
-        run: railway run php artisan migrate:fresh --seed
