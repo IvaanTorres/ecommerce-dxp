@@ -56,12 +56,11 @@ jobs:
         run: |
           cd api/
           composer install
-          composer update
-          ls -la
-          php artisan --version
       
       - name: Run migrations
-        run: ls -la
+        run: |
+          cd api/
+          railway run php artisan migrate:fresh --seed
 
       # # Install artisan CLI as global with composer
       # - name: Install artisan CLI
