@@ -57,14 +57,12 @@ jobs:
           cd api/
           composer install
       
-      - name: Run migrations
-        run: |
-          cd api/
-          railway run php artisan migrate:fresh --seed -n
-
-      # # Install artisan CLI as global with composer
-      # - name: Install artisan CLI
-      #   run: composer global require laravel/tinker
+      # - name: Run migrations
+      #   run: |
+      #     cd api/
+      #     railway run php artisan migrate:fresh --seed -n --force
 
       - name: Deployment to Railway
-        run: railway up
+        run: |
+          cd api/
+          railway up
