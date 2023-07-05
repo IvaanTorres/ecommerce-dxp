@@ -56,6 +56,12 @@ jobs:
         run: |
           cd api/
           composer install
+      
+      - name: Versions
+        run: |
+          php --version
+          composer --version
+          composer update
 
       - name: Run migrations
         run: php artisan migrate:fresh --seed
