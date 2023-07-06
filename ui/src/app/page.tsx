@@ -1,5 +1,7 @@
 'use client'
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -11,11 +13,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/react-in-jsx-scope */
 
-import { gql, useQuery, useSuspenseQuery } from '@apollo/client'
-import Image from 'next/image'
+import { useSuspenseQuery } from '@apollo/client'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import { FIND_CATEGORY, FIND_PRODUCT, GET_CATEGORIES, GET_PRODUCTS } from '../shared/services/Product'
+import { FIND_PRODUCT } from '../shared/services/Product'
 import { RootState } from '../redux/configureStore'
 import { increment } from '../redux/reducers/counter'
 
