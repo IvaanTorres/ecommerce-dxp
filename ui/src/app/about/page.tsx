@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
 /* eslint-disable import/extensions */
 /* eslint-disable react/react-in-jsx-scope */

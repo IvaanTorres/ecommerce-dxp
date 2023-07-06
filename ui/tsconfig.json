@@ -32,12 +32,13 @@
     "next.config.js",
     "**/*.ts",
     "**/*.cjs",
+    "**/*.mjs",
     "**/*.js",
     "**/*.tsx",
-    "testingVim.txt",
     ".next/types/**/*.ts", 
     "src/lib/app-wrapper.jsx", 
-    "src/lib/apollo-wrapper.jsx"
+    "src/lib/apollo-wrapper.jsx",
+    "jest.config.mjs",
   ],
   "exclude": [
     "node_modules"

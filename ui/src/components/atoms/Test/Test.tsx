@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react'
 
 interface Props {
@@ -10,6 +11,7 @@ const Test = ({ title }: Props) => (
       Test:
       {title}
     </h1>
+    <button>Test button</button>
   </div>
 )
 
