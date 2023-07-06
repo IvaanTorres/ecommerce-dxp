@@ -63,6 +63,4 @@ jobs:
       #     railway run php artisan migrate:fresh --seed -n --force
 
       - name: Deployment to Railway
-        run: |
-          cd api/
-          railway up
+        run: railway up
