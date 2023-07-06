@@ -48,8 +48,8 @@ export const FIND_CATEGORY = (levels: number) => {
   };
 
   return gql`
-    query {
-      category(id: "3") {
+    query getCategory($id: ID!) {
+      category(id: $id) {
         id
         name
         ${nestedLevels(levels)}
@@ -57,3 +57,12 @@ export const FIND_CATEGORY = (levels: number) => {
     }
   `;
 };
+
+export const GET_CATEGORIES = gql`
+query {
+  categories {
+    id
+    name
+  }
+}
+`

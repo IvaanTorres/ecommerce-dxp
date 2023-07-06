@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,7 +17,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -22,7 +34,12 @@
     "**/*.cjs",
     "**/*.js",
     "**/*.tsx",
-    "testingVim.txt"
+    "testingVim.txt",
+    ".next/types/**/*.ts", 
+    "src/lib/app-wrapper.jsx", 
+    "src/lib/apollo-wrapper.jsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

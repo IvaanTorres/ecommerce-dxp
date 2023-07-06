@@ -1,27 +1,33 @@
+'use client'
+
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/require-default-props */
 import React from 'react'
-import styles from './Button.module.scss'
+import './button.css'
 
 interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean;
+  primary?: boolean
   /**
    * What background color to use
    */
-  backgroundColor?: string;
+  backgroundColor?: string
   /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large'
   /**
    * Button contents
    */
-  label: string;
+  label: string
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?: () => void
 }
 
 /**
@@ -38,18 +44,15 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={[styles['storybook-button'], styles[`storybook-button--${size}`], styles[mode]].join(' ')}
-      style={{ backgroundColor }}
+      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       {...props}
     >
       {label}
+      <style jsx>{`
+        button {
+          background-color: ${backgroundColor}
+        }
+      `}</style>
     </button>
   )
-}
-
-Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
-  size: 'medium',
-  onClick: undefined,
 }

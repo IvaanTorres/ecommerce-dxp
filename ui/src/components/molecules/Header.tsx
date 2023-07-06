@@ -1,24 +1,25 @@
+'use client'
+
+/* eslint-disable react/require-default-props */
 import React from 'react'
 
 import { Button } from './Button'
-import './header.scss'
+import './header.css'
 
 type User = {
-  name: string;
+  name: string
 }
 
 interface HeaderProps {
-  user?: User;
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
+  user?: User
+  onLogin: () => void
+  onLogout: () => void
+  onCreateAccount: () => void
 }
 
-export const Header = ({
-  user, onLogin, onLogout, onCreateAccount,
-}: HeaderProps) => (
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
   <header>
-    <div className="wrapper">
+    <div className="storybook-header">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
@@ -42,10 +43,7 @@ export const Header = ({
         {user ? (
           <>
             <span className="welcome">
-              Welcome,
-              {' '}
-              <b>{user.name}</b>
-              !
+              Welcome, <b>{user.name}</b>!
             </span>
             <Button size="small" onClick={onLogout} label="Log out" />
           </>
@@ -59,7 +57,3 @@ export const Header = ({
     </div>
   </header>
 )
-
-Header.defaultProps = {
-  user: undefined,
-}
