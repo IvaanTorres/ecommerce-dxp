@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/extensions */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/no-unsafe-call */

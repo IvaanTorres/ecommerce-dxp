@@ -1,5 +1,10 @@
 'use client'
 
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/button-has-type */
+
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
