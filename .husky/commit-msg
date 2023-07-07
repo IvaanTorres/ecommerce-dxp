@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+current_branch=`git rev-parse --abbrev-ref HEAD`
+if [[ $current_branch =~ master|main|dev ]]; then
+    printf "${BLUE}Running commit message checks...\n${NC}"
+    npx --no -- commitlint --edit 
+fi

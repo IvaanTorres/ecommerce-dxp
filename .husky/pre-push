@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+NEW_LINE=$(printf "\n")
+
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+STORYBOOK_SERVER="http://localhost:6006"
+
+# ---------------------------------------------------------------------------- #
+#                                   UI Check                                   #
+# ---------------------------------------------------------------------------- #
+echo "${NEW_LINE}"
+printf "${BLUE}Running Tests... (Jest and Storybook with Playwright)\n${NC}"
+echo "${NEW_LINE}"
+printf "${YELLOW}Please, check the UI development server is up and running \n${NC}"
+printf "${YELLOW}Please, check the API development server is up and running \n${NC}"
+
+echo "${NEW_LINE}"
+cd ui/
+printf "${BLUE}Running UI Unit Tests... (Jest)\n${NC}"
+npm run test
+
+echo "${NEW_LINE}"
+printf "${BLUE}Running E2E Tests... (Storybook Interactions)\n${NC}"
+# Build and run Storybook http server in background
+npm run build-storybook
+npm run build-storybook:start
+# Infinite loop until Storybook http server is up and running
+source ../scripts/wait-on-server.sh ${STORYBOOK_SERVER}
+# Run E2E tests
+npm run test-storybook
+# Kill Storybook http server once E2E tests are done
+npm run build-storybook:kill
+cd ../
+
+# ---------------------------------------------------------------------------- #
+#                                   API Check                                  #
+# ---------------------------------------------------------------------------- #
+echo "${NEW_LINE}"
+cd api/
+printf "${BLUE}Running API Tests... (PHPUnit)\n${NC}"
+echo "${NEW_LINE}"
+./vendor/bin/phpunit
