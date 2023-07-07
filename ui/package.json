@@ -9,8 +9,8 @@
     "test": "jest --silent --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-storybook:start": "source ../scripts/start-server.sh 6006 ./storybook-static",
-    "build-storybook:kill": "source ../scripts/kill-server.sh 6006",
+    "build-storybook:start": ". ../scripts/start-server.sh 6006 ./storybook-static",
+    "build-storybook:kill": ". ../scripts/kill-server.sh 6006",
     "test-storybook": "test-storybook"
   },
   "dependencies": {
