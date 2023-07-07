@@ -8,7 +8,9 @@ NC='\033[0m' # No Color
 NEW_LINE=$(printf "\n")
 
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
-STORYBOOK_SERVER="http://localhost:6006"
+
+STORYBOOK_PORT=6007
+STORYBOOK_SERVER="http://127.0.0.1:${STORYBOOK_PORT}"
 
 # ---------------------------------------------------------------------------- #
 #                                   UI Check                                   #
@@ -28,13 +30,13 @@ echo "${NEW_LINE}"
 printf "${BLUE}Running E2E Tests... (Storybook Interactions)\n${NC}"
 # Build and run Storybook http server in background
 npm run build-storybook
-npm run build-storybook:start
-# Infinite loop until Storybook http server is up and running
+source ../scripts/start-server.sh ${STORYBOOK_PORT} ./storybook-static
+# Wait until Storybook http server is up and running
 source ../scripts/wait-on-server.sh ${STORYBOOK_SERVER}
 # Run E2E tests
-npm run test-storybook
+npm run test-storybook -- --url ${STORYBOOK_SERVER}
 # Kill Storybook http server once E2E tests are done
-npm run build-storybook:kill
+source ../scripts/kill-server.sh ${STORYBOOK_PORT}
 cd ../
 
 # ---------------------------------------------------------------------------- #
