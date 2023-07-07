@@ -61,6 +61,7 @@ jobs:
         run: |
           cd ui/
           npm run build-storybook
+          npm install -g http-server
           npm run build-storybook:start
           source ../scripts/wait-on-server.sh http://localhost:6006
           npm run test-storybook
