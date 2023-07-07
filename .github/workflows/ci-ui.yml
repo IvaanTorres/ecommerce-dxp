@@ -57,6 +57,15 @@ jobs:
           cd ui/
           npm run test
 
+      - name: Run Integration tests (Storybook Interactions with Playwright)
+        run: |
+          cd ui/
+          npm run build-storybook
+          npm run build-storybook:start
+          source ../scripts/wait-on-server.sh http://localhost:6006
+          npm run test-storybook
+          npm run build-storybook:kill
+
   # ---------------------------------------------------------------------------- #
   #                                  Deployment                                  #
   # ---------------------------------------------------------------------------- #
