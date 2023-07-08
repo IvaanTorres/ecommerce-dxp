@@ -61,7 +61,7 @@ jobs:
         run: |
           cd ui/
           npm run build-storybook
-          source ../scripts/start-server.sh 6006 ./storybook-static"
+          source ../scripts/start-server.sh 6006 ./storybook-static
           source ../scripts/wait-on-server.sh http://localhost:6006
           npm run test-storybook
           source ../scripts/kill-server.sh 6006
