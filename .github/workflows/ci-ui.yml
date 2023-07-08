@@ -61,8 +61,7 @@ jobs:
         run: |
           cd ui/
           npm run build-storybook
-          npm install -g http-server
-          npm run build-storybook:start
+          npx http-server ./storybook-static --port 6006 --silent &
           source ../scripts/wait-on-server.sh http://localhost:6006
           npm run test-storybook
           npm run build-storybook:kill
