@@ -61,10 +61,10 @@ jobs:
         run: |
           cd ui/
           npm run build-storybook
-          npx http-server ./storybook-static --port 6006 --silent &
+          source ../scripts/start-server.sh 6006 ./storybook-static"
           source ../scripts/wait-on-server.sh http://localhost:6006
           npm run test-storybook
-          npm run build-storybook:kill
+          source ../scripts/kill-server.sh 6006
 
   # ---------------------------------------------------------------------------- #
   #                                  Deployment                                  #
