@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/IvaanTorres/ecommerce#readme",
   "devDependencies": {
-    "@types/minimist": "^1.2.2",
-    "commitlint": "^17.6.6",
+    "@types/minimist": "^1.2.4",
+    "commitlint": "^18.2.0",
     "standard-version": "^9.5.0"
   }
 }

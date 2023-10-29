@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/extensions */
 import { Inter } from 'next/font/google'

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable import/extensions */

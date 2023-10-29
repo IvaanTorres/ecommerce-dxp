@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/await-thenable */
