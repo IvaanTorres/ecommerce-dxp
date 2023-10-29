@@ -11,6 +11,26 @@ query Find ($id: ID!){
   product (id: $id){
     id
     name
+    price
+    categories {
+      id
+      name
+    }
+    brand {
+      id
+      name
+    }
+  } 
+}
+`
+export const UPDATE_PRODUCT = gql`
+mutation updateProduct ($id: ID!, $name: String!){
+  updateProduct (input: {
+    id: $id
+    name: $name
+  }){
+    id
+    name
   }
 }
 `
@@ -23,9 +43,11 @@ query {
     price
     categories {
       id
+      name
     }
     brand {
       id
+      name
     }
   }
 }

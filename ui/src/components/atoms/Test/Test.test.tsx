@@ -11,7 +11,7 @@ describe('testing', () => {
   })
 
   it('button has text', () => {
-    render(<Test title="test" />)
+    render(<Test title="Test button" />)
     const testText = screen.getByText(/Test button/i)
     expect(testText).toBeInTheDocument()
   })

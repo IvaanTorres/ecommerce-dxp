@@ -1,4 +1,6 @@
-'use client'
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -13,23 +15,51 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/react-in-jsx-scope */
 
-import { useSuspenseQuery } from '@apollo/client'
+'use client'
+
+import { useMutation, useSuspenseQuery } from '@apollo/client'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import { FIND_PRODUCT } from '../shared/services/Product'
+import { useRouter } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
+// import { useSuspenseQuery } from '@apollo/experimental-nextjs-app-support/ssr'
+import { uniqueId } from 'lodash'
+import { FIND_PRODUCT, UPDATE_PRODUCT } from '../shared/services/Product'
 import { RootState } from '../redux/configureStore'
 import { increment } from '../redux/reducers/counter'
+import { generateRandomId } from '../shared/utils/generateRandomNumber'
+
+export const dynamic = 'force-dynamic'
 
 const Home = () => {
-  const counter = useSelector((state: RootState) => state.counter)
-  const dispatch = useDispatch()
+  const router = useRouter()
+  const [id, setId] = useState<any>(5)
 
-  // Random number to 150
-  const id = Math.floor(Math.random() * 150)
+  // useEffect(() => {
+  //   setId(generateRandomId)
+  // }, [])
 
-  const { data: product, error, refetch } = useSuspenseQuery<any>(FIND_PRODUCT, {
-    variables: { id: '3' },
-    // fetchPolicy: 'cache-only',
+  const { data: product, error, refetch, client } = useSuspenseQuery<any>(FIND_PRODUCT, {
+    variables: { id },
+  })
+
+  const generateRandomString = (length: number) => {
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    const charactersLength = characters.length
+
+    for (let i = 0; i < length; i += 1) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength))
+    }
+
+    return result
+  }
+
+  const [updateProduct] = useMutation(UPDATE_PRODUCT, {
+    variables: {
+      id,
+      name: generateRandomString(10),
+    },
   })
 
   return (
@@ -39,25 +69,27 @@ const Home = () => {
       <hr />
 
       <p>Apollo Client:</p>
-      <p>Product with ID 3: {product?.product.name}
-        <button onClick={() => refetch({
-          id: id.toString(),
-        })}
-        >Refetch this query (Get product with random ID)
-        </button>
-      </p>
+      <p>Product with ID {product?.product.id}: {product?.product.name}</p>
+
+      <button onClick={async () => {
+        await updateProduct()
+      }}
+      >Update product name
+      </button>
 
       <hr />
-      <p>
-        Counters:
-      </p>
-      {counter.counters.map((counter) => (
-        <p key={counter.id}>
-          {counter.id} - {counter.name}: {counter.value} <button onClick={() => dispatch(increment())}>Show</button>
-        </p>
-      ))}
-      <p>{counter.name}</p>
-      <Link href="/about">Go to About page (SSR)</Link>
+      {/* <Link
+        href={`/ssr/${id}`}
+      >Go to server component using revalidation inside the fetch call
+      </Link>
+      <hr />
+      <Link
+        href={`/ssr-segment/${id}`}
+      >Go to server component using segment to revalidate 0
+      </Link>
+      <hr /> */}
+
+      <Link href={`/suspense/${id}`}>Go to client component with suspense query</Link>
     </main>
   )
 }

@@ -35,10 +35,9 @@
     "**/*.mjs",
     "**/*.js",
     "**/*.tsx",
+    "**/*.jsx",
     ".next/types/**/*.ts", 
-    "src/lib/app-wrapper.jsx", 
-    "src/lib/apollo-wrapper.jsx",
-    "jest.config.mjs",
+    "jest.config.mjs"
   ],
   "exclude": [
     "node_modules"

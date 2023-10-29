@@ -3,14 +3,13 @@
 'use client'
 
 import { Provider } from 'react-redux'
-import NextNProgress from 'nextjs-progressbar'
 import store from '../redux/configureStore'
 
 const AppWrapper = ({ children }) => (
   <Provider store={store}>
-    <NextNProgress />
     {children}
   </Provider>
+  // children
 )
 
 export default AppWrapper

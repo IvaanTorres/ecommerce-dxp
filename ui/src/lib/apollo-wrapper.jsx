@@ -9,8 +9,9 @@
 import {
   ApolloClient,
   ApolloLink,
+  ApolloProvider,
   HttpLink,
-  SuspenseCache,
+  InMemoryCache,
 } from '@apollo/client'
 import {
   NextSSRApolloClient,
@@ -19,10 +20,6 @@ import {
   SSRMultipartLink,
 } from '@apollo/experimental-nextjs-app-support/ssr'
 import env from '../shared/enums/config/environment'
-
-function makeSuspenseCache() {
-  return new SuspenseCache()
-}
 
 function makeClient() {
   const httpLink = new HttpLink({
@@ -43,13 +40,26 @@ function makeClient() {
   })
 }
 
+// Create a graphql apollo client no ssr
+const c = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: env.NEXT_PUBLIC_API_URL,
+  }),
+})
+
 const ApolloWrapper = ({ children }) => (
   <ApolloNextAppProvider
     makeClient={makeClient}
-    makeSuspenseCache={makeSuspenseCache}
   >
     {children}
   </ApolloNextAppProvider>
+)
+
+const ApolloWrapper2 = ({ children }) => (
+  <ApolloProvider client={c}>
+    {children}
+  </ApolloProvider>
 )
 
 export default ApolloWrapper
