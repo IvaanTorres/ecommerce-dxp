@@ -19,7 +19,7 @@ The project is configured as monorepo (ui/, api/).
 
 ### Requirements
 
-- Node (UI): **>= v16**
+- Node (UI): **>= v18**
 - PHP (API): **>= v8.1**
 
 ### Root (/)
