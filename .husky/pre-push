@@ -21,8 +21,13 @@ echo "${NEW_LINE}"
 printf "${YELLOW}Please, check the UI development server is up and running \n${NC}"
 printf "${YELLOW}Please, check the API development server is up and running \n${NC}"
 
-echo "${NEW_LINE}"
 cd ui/
+
+echo "${NEW_LINE}"
+printf "${BLUE}Running lint check... (ESLint)\n${NC}"
+npm run lint
+
+echo "${NEW_LINE}"
 printf "${BLUE}Running UI Unit Tests... (Jest)\n${NC}"
 npm run test
 
@@ -37,6 +42,7 @@ source ../scripts/wait-on-server.sh ${STORYBOOK_SERVER}
 npm run test-storybook -- --url ${STORYBOOK_SERVER}
 # Kill Storybook http server once E2E tests are done
 source ../scripts/kill-server.sh ${STORYBOOK_PORT}
+
 cd ../
 
 # ---------------------------------------------------------------------------- #

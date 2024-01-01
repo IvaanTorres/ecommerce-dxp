@@ -1,10 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
-// import './globals.css'
 import { Inter } from 'next/font/google'
 import ApolloWrapper from '../lib/apollo-wrapper'
 import AppWrapper from '../lib/app-wrapper'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,13 +11,18 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic'
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 const RootLayout = ({
   children,
 }: {
   children: React.ReactNode
 }) => (
-  <html lang="en">
-    <body className={inter.className}>
+  <html lang="en" className={inter.className}>
+    <body>
       <ApolloWrapper>
         <AppWrapper>
           {children}

@@ -7,9 +7,10 @@ import store from '../redux/configureStore'
 
 const AppWrapper = ({ children }) => (
   <Provider store={store}>
-    {children}
+    <main>
+      {children}
+    </main>
   </Provider>
-  // children
 )
 
 export default AppWrapper

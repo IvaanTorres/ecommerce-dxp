@@ -40,26 +40,12 @@ function makeClient() {
   })
 }
 
-// Create a graphql apollo client no ssr
-const c = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: env.NEXT_PUBLIC_API_URL,
-  }),
-})
-
 const ApolloWrapper = ({ children }) => (
   <ApolloNextAppProvider
     makeClient={makeClient}
   >
     {children}
   </ApolloNextAppProvider>
-)
-
-const ApolloWrapper2 = ({ children }) => (
-  <ApolloProvider client={c}>
-    {children}
-  </ApolloProvider>
 )
 
 export default ApolloWrapper
