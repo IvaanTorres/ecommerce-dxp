@@ -1,4 +1,4 @@
-name: API (Laravel 9 - GraphQL - PostgreSQL) - CI/CD
+name: API (Laravel 10 - GraphQL) - CI/CD
 on:
   push:
     branches: ['dev', 'master']
@@ -10,7 +10,7 @@ jobs:
   # ---------------------------------------------------------------------------- #
   #                                   Tests job                                  #
   # ---------------------------------------------------------------------------- #
-  Tests:
+  tests:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -42,8 +42,8 @@ jobs:
   # ---------------------------------------------------------------------------- #
   #                                Deployment job                                #
   # ---------------------------------------------------------------------------- #
-  Deploy:
-    needs: 'Tests'
+  deploy:
+    needs: 'tests'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
