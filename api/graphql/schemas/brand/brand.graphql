@@ -2,7 +2,7 @@ type Brand {
     id: ID
     name: String
     description: String
-    categories: [Category!] @allCategoriesOfProducts
+    # categories: [Category!] @allCategoriesOfProducts
     images: [Image!]! @hasMany
     products: [Product!]! @hasMany
     discount: Discount @belongsTo
@@ -11,7 +11,7 @@ type Brand {
 extend type Query {
     brands: [Brand!]! @all
     brand(id: ID! @eq): Brand @find
-    brandsByCategory(categoryId: ID!): [Brand!]! @allBrandsByCategoryId
+    # brandsByCategory(categoryId: ID!): [Brand!]! @allBrandsByCategoryId
 }
 
 extend type Mutation {
