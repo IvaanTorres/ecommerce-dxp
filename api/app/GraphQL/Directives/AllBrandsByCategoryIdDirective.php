@@ -32,22 +32,20 @@ GRAPHQL;
      * @param  \Nuwave\Lighthouse\Schema\Values\FieldValue  $fieldValue
      * @return \Nuwave\Lighthouse\Schema\Values\FieldValue
      */
-    public function resolveField(FieldValue $fieldValue)
+    public function resolveField(FieldValue $fieldValue): callable
     {
-        $fieldValue->setResolver(function ($root, array $args) {
-            $categoryId = $args['categoryId'];
+        return function ($root, array $args) {
+          $categoryId = $args['categoryId'];
 
-            // Retrieve the category by ID
-            $category = Category::find($categoryId);
+          // Retrieve the category by ID
+          $category = Category::find($categoryId);
 
-            if(!$category) {
-                // Throw a graphql error
-                throw new GraphQLException('Category not found', 'Category');
-            }
-            // Return the brands associated with the category's products
-            return $category->products->pluck('brand')->unique();
-        });
-
-        return $fieldValue;
+          if(!$category) {
+              // Throw a graphql error
+              throw new GraphQLException('Category not found');
+          }
+          // Return the brands associated with the category's products
+          return $category->products->pluck('brand')->unique();
+      };
     }
 }

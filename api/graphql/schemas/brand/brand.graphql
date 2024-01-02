@@ -1,6 +1,6 @@
 type Brand {
-    id: ID!
-    name: String!
+    id: ID
+    name: String
     description: String
     categories: [Category!] @allCategoriesOfProducts
     images: [Image!]! @hasMany

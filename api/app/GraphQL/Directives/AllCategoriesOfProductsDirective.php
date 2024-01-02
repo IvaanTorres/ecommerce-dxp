@@ -26,23 +26,21 @@ GRAPHQL;
      * @param  \Nuwave\Lighthouse\Schema\Values\FieldValue  $fieldValue
      * @return \Nuwave\Lighthouse\Schema\Values\FieldValue
      */
-    public function resolveField(FieldValue $fieldValue)
+    public function resolveField(FieldValue $fieldValue): callable
     {
-        $fieldValue->setResolver(function ($root, array $args, $context, $info) {
-            // Get the products
-            $products = $root->products;
+        return function ($root, array $args, $context, $info) {
+          // Get the products
+          $products = $root->products;
 
-            // Get the categories of the products
-            $categories = $products->map(function ($product) {
-                return $product->categories;
-            })->flatten();
+          // Get the categories of the products
+          $categories = $products->map(function ($product) {
+              return $product->categories;
+          })->flatten();
 
-            // Return the unique categories by id
-            $categories = $categories->unique('id');
+          // Return the unique categories by id
+          $categories = $categories->unique('id');
 
-            return $categories;
-        });
-
-        return $fieldValue;
+          return $categories;
+      };
     }
 }

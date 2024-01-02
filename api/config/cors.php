@@ -23,9 +23,6 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    // Allow mixed content (http and https)
-    // 'allow_mixed_content' => true,
-
     'allowed_headers' => ['*'],
 
     'exposed_headers' => [],

@@ -5,16 +5,16 @@ type Mutation
 
 #import schemas/gender/*.graphql
 
+#import schemas/role/*.graphql
+
+#import schemas/user/*.graphql
+#import schemas/user/inputs/*.graphql
+
 #import schemas/product/*.graphql
 #import schemas/product/inputs/*.graphql
 
 #import schemas/review/*.graphql
 #import schemas/review/inputs/*.graphql
-
-#import schemas/role/*.graphql
-
-#import schemas/user/*.graphql
-#import schemas/user/inputs/*.graphql
 
 #import schemas/image/*.graphql
 #import schemas/image/inputs/*.graphql
